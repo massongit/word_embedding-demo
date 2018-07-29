@@ -22,13 +22,11 @@ class Input extends React.Component {
     }
 
     /**
-     * onSubmitイベント
-     * @param ev イベント
+     * 入力されたキーワードを元にAPIへの入力用のキーワードを作成する
+     * @returns {{positive: Array, negative: Array}} APIへの入力用のキーワード
      */
-    async onSubmit(ev) {
-        // サーバーへのSubmitが行われないようにする
-        ev.preventDefault()
-
+    makeKeyWords() {
+        // キーワード
         const keywords = {
             positive: [],
             negative: []
@@ -44,6 +42,20 @@ class Input extends React.Component {
                 keywords.positive.push(word)
             }
         }
+
+        return keywords
+    }
+
+    /**
+     * onSubmitイベント
+     * @param ev イベント
+     */
+    async onSubmit(ev) {
+        // サーバーへのSubmitが行われないようにする
+        ev.preventDefault()
+
+        // キーワード
+        const keywords = this.makeKeyWords()
 
         // 以前の入力文とは異なる文章が入力されたとき、Word2Vecによる計算を行い、Word2Vecによる計算結果の表示Actionをdispatch
         if (0 < keywords.positive.length && 0 < keywords.negative.length && keywords !== this.props.keywords) {
