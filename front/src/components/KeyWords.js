@@ -28,16 +28,12 @@ class KeyWords extends React.Component {
                         (() => {
                             let r = []
 
-                            if (this.props.positive) {
-                                r = r.concat(this.props.positive.map(w => (
-                                    "+" + w
-                                )))
-                            }
-
-                            if (this.props.negative) {
-                                r = r.concat(this.props.negative.map(w => (
-                                    "-" + w
-                                )))
+                            for (const v of [["+", this.props.positive], ["-", this.props.negative]]) {
+                                if (v[1]) {
+                                    r = r.concat(v[1].map(w => (
+                                        v[0] + w
+                                    )))
+                                }
                             }
 
                             return r.join(" ")
