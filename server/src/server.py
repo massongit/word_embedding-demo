@@ -80,6 +80,26 @@ class Word2VecView(flask_classy.FlaskView):
             'dicdir': conf.get('general', 'mecab', 'dir path')
         })
 
+    def _count_keywords(self, request):
+        """
+        単語をカウントする
+        (positiveな単語は+1、negativeな単語は-1する)
+        :param request: リクエスト
+        :return: 単語のカウント結果
+        """
+        # 単語カウンター
+        # (positiveな単語は+1、negativeな単語は-1する)
+        counter = OrderedCounter()
+
+        # 単語をMeCabで分割し、単語カウンターでカウント
+        for key, pm in [['positive', 1], ['negative', -1]]:
+            if key in request:
+                for word_request in request[key]:
+                    for word_mecab in self.mecab.parse(word_request).split():
+                        counter[word_mecab] += pm * 1
+
+        return counter
+
     def _make_responce(self, request):
         """
         レスポンスを生成する
@@ -88,17 +108,7 @@ class Word2VecView(flask_classy.FlaskView):
         """
         # 単語カウンター
         # (positiveな単語は+1、negativeな単語は-1する)
-        counter = OrderedCounter()
-
-        # 単語をMeCabで分割し、単語カウンターでカウント
-        for key in ['positive', 'negative']:
-            if key in request:
-                for word_request in request[key]:
-                    for word_mecab in self.mecab.parse(word_request).split():
-                        if key == 'positive':
-                            counter[word_mecab] += 1
-                        else:
-                            counter[word_mecab] -= 1
+        counter = self._count_keywords(request)
 
         # レスポンス
         responce = {
