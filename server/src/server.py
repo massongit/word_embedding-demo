@@ -80,6 +80,11 @@ class Word2VecView(flask_classy.FlaskView):
             'dicdir': conf.get('general', 'mecab', 'dir path')
         })
 
+        self.pn = {
+            'positive': 1,
+            'negative': -1
+        }
+
     def _count_keywords(self, request):
         """
         単語をカウントする
@@ -92,7 +97,7 @@ class Word2VecView(flask_classy.FlaskView):
         counter = OrderedCounter()
 
         # 単語をMeCabで分割し、単語カウンターでカウント
-        for key, pm in [['positive', 1], ['negative', -1]]:
+        for key, pm in self.pn.items():
             if key in request:
                 for word_request in request[key]:
                     for word_mecab in self.mecab.parse(word_request).split():
@@ -112,7 +117,7 @@ class Word2VecView(flask_classy.FlaskView):
 
         # レスポンス
         responce = {k: [w for w, n in counter.items() for _ in range(pm * n)]
-                    for k, pm in [['positive', 1], ['negative', -1]]}
+                    for k, pm in self.pn.items()}
 
         # 類似単語を導出
         try:
