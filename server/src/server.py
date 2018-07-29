@@ -98,9 +98,9 @@ class Word2VecView(flask_classy.FlaskView):
 
         # 単語をMeCabで分割し、単語カウンターでカウント
         for key, pm in [[k, pm] for k, pm in self.pn.items() if k in request]:
-            for word_request in request[key]:
-                for word_mecab in self.mecab.parse(word_request).split():
-                    counter[word_mecab] += pm * 1
+            for word in request[key]:
+                for word_ in self.mecab.parse(word).split():
+                    counter[word_] += pm * 1
 
         return counter
 
