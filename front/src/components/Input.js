@@ -22,17 +22,16 @@ class Input extends React.Component {
     }
 
     /**
-     * 入力されたキーワードを元にAPIへの入力用のキーワードを作成する
+     * 入力されたキーワードをpositiveな単語とnegativeな単語に分類する
      * @returns {{positive: Array, negative: Array}} APIへの入力用のキーワード
      */
-    makeKeyWords() {
+    classifyKeyWords() {
         // キーワード
         const keywords = {
             positive: [],
             negative: []
         }
 
-        // 入力されたキーワードをpositiveな単語とnegativeな単語に分類
         for (const word of this.input.value.replace("　", " ").trim().split(" ")) {
             if (word.startsWith("-")) {
                 keywords.negative.push(word.slice(1))
@@ -43,6 +42,18 @@ class Input extends React.Component {
             }
         }
 
+        return keywords
+    }
+
+    /**
+     * 入力されたキーワードを元にAPIへの入力用のキーワードを作成する
+     * @returns {{positive: Array, negative: Array}} APIへの入力用のキーワード
+     */
+    makeKeyWords() {
+        // キーワード
+        const keywords = this.classifyKeyWords()
+
+        // キーワードのりストをソート
         for (const k in keywords) {
             keywords[k].sort()
         }
