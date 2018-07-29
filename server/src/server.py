@@ -174,4 +174,4 @@ if __name__ == '__main__':
 Word2VecView.register(app)
 
 if __name__ == '__main__':
-    app.run(conf.get('general', 'server', 'host'), conf.get('general', 'server', 'port'), True)
+    app.run(conf.get('general', 'server', 'host'), conf.get('general', 'server', 'port'), True, use_reloader=False)
