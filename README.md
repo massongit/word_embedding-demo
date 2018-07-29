@@ -1,5 +1,5 @@
 # Word2Vecデモプログラム
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![Maintainability](https://api.codeclimate.com/v1/badges/d203cab40abbcc8fa7a4/maintainability)](https://codeclimate.com/github/massongit/word2vec-demo/maintainability)  
 Word2Vecを用いて単語の加算・減算を行うデモプログラム
 
 ## 作者
