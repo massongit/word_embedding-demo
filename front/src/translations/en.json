@@ -1,0 +1,16 @@
+{
+  "unknown": "(Unknown)",
+  "errorMessage.default": "The following error occurred: {message}",
+  "errorMessage.predict": "The following error occurred during calculation: {message}",
+  "title.description": "Description",
+  "title.input": "Input",
+  "title.result": "Result",
+  "description.word2Vec": "It is a method of expressing words as vectors. It can be used to add or subtract words.",
+  "description.input": "Please input a Japanese words and click the calculation button.",
+  "description.input.supplement": "To subtract, add \"-\" to the beginning of the word.",
+  "header.candidate": "Candidate",
+  "header.word": "Word",
+  "header.cosine": "Cosine Similarity (-1 to 1)",
+  "header.keywords": "<Keywords>",
+  "calculate": "Calculate"
+}

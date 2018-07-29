@@ -1,0 +1,16 @@
+{
+  "unknown": "(予測不能)",
+  "errorMessage.default": "エラーが発生しました: {message}",
+  "errorMessage.predict": "計算中にエラーが発生しました: {message}",
+  "title.description": "概要",
+  "title.input": "入力",
+  "title.result": "結果",
+  "description.word2Vec": "単語をベクトル表現する技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+  "description.input": "日本語の単語を空白で区切って入力し、計算ボタンをクリックしてください。",
+  "description.input.supplement": "引き算を行う場合は単語の先頭に『-』を付けます。",
+  "header.candidate": "候補",
+  "header.word": "単語",
+  "header.cosine": "コサイン類似度 (-1 〜 1)",
+  "header.keywords": "<キーワード>",
+  "calculate": "計算"
+}

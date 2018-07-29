@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+flask = "*"
+flask-api = "*"
+gensim = "*"
+natto-py = "*"
+flask-classy = "*"
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.5"

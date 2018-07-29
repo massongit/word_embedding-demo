@@ -1,0 +1,108 @@
+{
+  "name": "word2vec-demo",
+  "author": "鈴木雅也",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "node-fetch": "^2.1.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.4.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0"
+  },
+  "devDependencies": {
+    "deepcopy": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-intl": "^2.0.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-react-intl": "^1.1.2",
+    "eslint-plugin-react-redux": "^2.3.0",
+    "jest-fetch-mock": "^1.6.5",
+    "redux-mock-store": "^1.5.3",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      "react-app",
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "> 0.5%",
+              "> 0.5% in JP",
+              "last 2 versions",
+              "Firefox ESR",
+              "not dead"
+            ],
+            "useBuiltIns": true
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "syntax-async-functions",
+      "transform-async-to-generator"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-redux/recommended",
+      "plugin:jest/recommended",
+      "react-app"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "react-redux",
+      "react-intl",
+      "jest"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        4,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  }
+}
