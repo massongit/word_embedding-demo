@@ -111,10 +111,8 @@ class Word2VecView(flask_classy.FlaskView):
         counter = self._count_keywords(request)
 
         # レスポンス
-        responce = {
-            'positive': [w for w, n in counter.items() for _ in range(n)],
-            'negative': [w for w, n in counter.items() for _ in range(-n)],
-        }
+        responce = {k: [w for w, n in counter.items() for _ in range(pm * n)]
+                    for k, pm in [['positive', 1], ['negative', -1]]}
 
         # 類似単語を導出
         try:
