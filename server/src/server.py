@@ -94,15 +94,20 @@ class Word2VecView(flask_classy.FlaskView):
         """
         # 単語カウンター
         # (positiveな単語は+1、negativeな単語は-1する)
-        counter = OrderedCounter()
+        # counter['positive']: positiveな単語のカウンター
+        # counter['negative']: negativeな単語のカウンター
+        counter = dict()
 
-        # 単語をMeCabで分割し、単語カウンターでカウント
-        for key, pm in [[k, pm] for k, pm in self.pn.items() if k in request]:
-            for word in request[key]:
-                for word_ in self.mecab.parse(word).split():
-                    counter[word_] += pm * 1
+        for k in self.pn.keys():
+            if k in request:
+                words = [w_ for w in request[k] for w_ in self.mecab.parse(w).split()]
+            else:
+                words = list()
 
-        return counter
+            counter[k] = OrderedCounter(words)
+
+        counter['positive'].subtract(counter['negative'])
+        return counter['positive']
 
     def _make_responce(self, request):
         """
