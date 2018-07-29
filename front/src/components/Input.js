@@ -38,9 +38,13 @@ class Input extends React.Component {
                 keywords.negative.push(word.slice(1))
             } else if (word.startsWith("+")) {
                 keywords.positive.push(word.slice(1))
-            } else {
+            } else if (word) {
                 keywords.positive.push(word)
             }
+        }
+
+        for (const k in keywords) {
+            keywords[k].sort()
         }
 
         return keywords
@@ -58,7 +62,7 @@ class Input extends React.Component {
         const keywords = this.makeKeyWords()
 
         // 以前の入力文とは異なる文章が入力されたとき、Word2Vecによる計算を行い、Word2Vecによる計算結果の表示Actionをdispatch
-        if (0 < keywords.positive.length && 0 < keywords.negative.length && keywords !== this.props.keywords) {
+        if ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords)) {
             try {
                 this.props.dispatch(showSimilarWords({
                     keywords,

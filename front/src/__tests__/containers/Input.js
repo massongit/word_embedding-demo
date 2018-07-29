@@ -8,7 +8,7 @@ import words from "../../test_data/words"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {Form, FormControl} from "react-bootstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
-import {keywords, showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
+import {showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
 import {makeShowSimilarWordsAction} from "../reducers"
 
 export const eventMock = {
@@ -18,6 +18,8 @@ export const eventMock = {
 const rootStateAfterShowSimilarWords = {
     showSimilarWords: showSimilarWordsState
 }
+
+const keywords_input = "-男 王 女"
 
 loadTranslation("./src/translations/ja.json")
 
@@ -87,7 +89,7 @@ describe("containers/Input", () => {
                 store={store}
             />
         )
-        inputComponent.find(FormControl).children().instance().value = "-男 王 女"
+        inputComponent.find(FormControl).children().instance().value = keywords_input
         fetch.mockResponse(JSON.stringify(words))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)
@@ -101,7 +103,7 @@ describe("containers/Input", () => {
                 store={store}
             />
         )
-        inputComponent.find(FormControl).children().instance().value = keywords
+        inputComponent.find(FormControl).children().instance().value = keywords_input
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(0)
         expect(store.getActions()).toHaveLength(0)
@@ -114,7 +116,7 @@ describe("containers/Input", () => {
                 store={store}
             />
         )
-        inputComponent.find(FormControl).children().instance().value = "東京 -日本 アメリカ"
+        inputComponent.find(FormControl).children().instance().value = "-日本 東京 アメリカ"
         fetch.mockResponse(JSON.stringify(words2))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)

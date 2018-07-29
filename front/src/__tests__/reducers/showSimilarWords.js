@@ -1,10 +1,12 @@
 import showSimilarWordsReducer from "../../reducers/showSimilarWords"
+import words from "../../test_data/words"
 import words2 from "../../test_data/words2"
+import keywords from "../../test_data/keywords"
+import keywords2 from "../../test_data/keywords2"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
 import {dispatchEqual, dispatchShowSimilarWordsEqual, makeShowSimilarWordsAction, storeEqual} from "./index"
-import {keywords, keywords2, showSimilarWordsState, showSimilarWordsState2, word} from "../../test_data"
-import words from "../../test_data/words"
+import {showSimilarWordsState, showSimilarWordsState2, word} from "../../test_data"
 
 const showSimilarWordsParameterInvalidKeyWords = {
     sentence: keywords,
