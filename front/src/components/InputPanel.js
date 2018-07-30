@@ -19,7 +19,10 @@ const InputPanel = () => (
                 additionalDescription={
                     <ul>
                         <li>
-                            <FormattedMessage id="description.input.supplement"/>
+                            <FormattedMessage id="description.input.supplement.1"/>
+                        </li>
+                        <li>
+                            <FormattedMessage id="description.input.supplement.2"/>
                         </li>
                     </ul>
                 }
