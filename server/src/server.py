@@ -92,6 +92,22 @@ class WordEmbeddingView(flask_classy.FlaskView):
             'negative': -1
         }
 
+    def _wakati_keyword(self, keyword):
+        """
+        キーワードの単語分割を行う
+        :param keyword: キーワード
+        :return: 単語分割されたキーワードのりスト
+        """
+        words = list()
+
+        if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
+            words.append(keyword)
+        else:  # Word2Vecのモデルを使用するとき
+            for keyword_ in self.mecab.parse(keyword).split():
+                words.append(keyword_)
+
+        return words
+
     def _count_keywords(self, request):
         """
         単語をカウントする
@@ -109,11 +125,7 @@ class WordEmbeddingView(flask_classy.FlaskView):
             words = list()
             if k in request:
                 for w in request[k]:
-                    if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
-                        words.append(w)
-                    else:  # Word2Vecのモデルを使用するとき、MeCabによる単語分割を行う
-                        for w_ in self.mecab.parse(w).split():
-                            words.append(w_)
+                    words += self._wakati_keyword(w)
 
             counter[k] = OrderedCounter(words)
 
