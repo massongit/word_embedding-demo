@@ -4,7 +4,6 @@
 サーバーのテスト
 """
 
-import inspect
 import json
 import pathlib
 
@@ -49,13 +48,13 @@ def test_render_index(client, conf):
         assert res.data.decode() == index_file.read()
 
 
-def test_analysis_word2vec(client, conf):
+def test_analysis_word_embedding(client, conf):
     """
-    Word2Vecによる計算が正常に行われる
+    分散表現による計算が正常に行われる
     :param client: テスト用のクライアント
     :param conf: 設定
     """
-    do_word2vec_test(client, conf, {
+    do_word_embedding_test(client, {
         'negative': [
             '男'
         ],
@@ -63,22 +62,24 @@ def test_analysis_word2vec(client, conf):
             '王',
             '女'
         ]
-    }, inspect.currentframe())
+    })
 
 
-def do_word2vec_test(client, conf, data, frame):
+def do_word_embedding_test(client, data):
     """
-    Word2Vecによる計算のテストを行う
+    分散表現による計算のテストを行う
     :param client: テスト用のクライアント
-    :param conf: 設定
     :param data: POSTするデータ
-    :param frame: fname (inspect.currentframe()を指定)
     """
-    res = client.post('/word2vec', data=json.dumps(data), content_type='application/json')
+    res = client.post('/wordembedding', data=json.dumps(data), content_type='application/json')
     do_test_http_ok(res)
-    with (pathlib.Path(conf.get('general', 'test', 'json dir path'))
-          / (inspect.getframeinfo(frame)[2] + '.json')).open() as json_file:
-        assert res.json == json.load(json_file)
+
+    for k in data.keys():
+        assert res.json[k] == data[k]
+
+    for w in res.json["similar"]:
+        assert "cosine" in w
+        assert "word" in w
 
 
 def do_test_http_ok(res):

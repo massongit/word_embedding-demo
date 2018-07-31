@@ -10,7 +10,7 @@
 |URL|概要|
 |:--:|:--:|
 |[http://localhost:5000/](http://localhost:5000/)|トップページ|
-|http://localhost:5000/word2vec/|Word2Vecによる計算用API|
+|http://localhost:5000/wordembedding/|分散表現による計算用API|
 
 ## コマンド
 ### フロントエンド
@@ -39,15 +39,15 @@
 1. `pytest`コマンドを実行します。
 
 ## フロントエンドのAction・State
-* showSimilarWords: Word2Vecによる計算結果の表示Action
+* showSimilarWords: 分散表現による計算結果の表示Action
     * Action
         * `action.payload.keywords`: 入力したキーワード (連想配列)
-        * `action.payload.words`: Word2Vecによる計算結果 (Word2Vecによる計算用APIのレスポンス)
+        * `action.payload.words`: 分散表現による計算結果 (分散表現による計算用APIのレスポンス)
     * State
         * `state.showSimilarWords.keywords`: 入力したキーワード (連想配列)
-        * `state.showSimilarWords.words`: Word2Vecによる計算結果 (Word2Vecによる計算用APIのレスポンス)
+        * `state.showSimilarWords.words`: 分散表現による計算結果 (分散表現による計算用APIのレスポンス)
 
-## Word2Vecによる計算用API
+## 分散表現による計算用API
 ### リクエスト
 日本語のpositiveな単語のリストとnegativeな単語のリスト (POSTメソッド, JSON形式)
 

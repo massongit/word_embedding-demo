@@ -9,6 +9,8 @@ flask-api = "*"
 gensim = "*"
 natto-py = "*"
 flask-classy = "*"
+cython = "*"
+pyfasttext = "*"
 
 [dev-packages]
 pytest = "*"

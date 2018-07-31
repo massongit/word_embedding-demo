@@ -13,7 +13,7 @@ const DescriptionPanel = () => (
             <Panel.Heading>
                 <FormattedMessage id="title.description"/>
             </Panel.Heading>
-            <PanelBody messageId="description.word2Vec"/>
+            <PanelBody messageId="description.wordEmbedding"/>
         </Panel>
     </Row>
 )

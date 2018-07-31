@@ -1,6 +1,6 @@
-# Word2Vecデモプログラム
+# 分散表現デモプログラム
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![Maintainability](https://api.codeclimate.com/v1/badges/d203cab40abbcc8fa7a4/maintainability)](https://codeclimate.com/github/massongit/word2vec-demo/maintainability)  
-Word2Vecを用いて単語の加算・減算を行うデモプログラム
+Word2VecやFastTextのモデルを用いて単語の加算・減算を行うデモプログラム
 
 ## 作者
 Masaya Suzuki <suzukimasaya428@gmail.com>
@@ -13,6 +13,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 * [Python](https://www.python.org/) 3.x
 * [Flask](http://flask.pocoo.org/)
 * [gensim](https://radimrehurek.com/gensim/)
+* [pyfasttext](https://github.com/vrasneur/pyfasttext)
 * [natto-py](https://github.com/buruzaemon/natto-py)
 
 ### フロントエンド
@@ -28,7 +29,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 
 ## 必要なソフトウェア
 ### 共通
-* [MeCab](http://taku910.github.io/mecab/)
+* [MeCab](http://taku910.github.io/mecab/) (Word2Vecのモデルを使用する場合のみ)
 * [Python](https://www.python.org/) 3.x
 * [pipenv](https://docs.pipenv.org/) (インストールコマンド: `pip install pipenv`)
 
@@ -37,8 +38,8 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 * [Yarn](https://yarnpkg.com/ja/)
 
 ## 必要なデータ
-* Word2Vecのモデル
-* Word2Vecのモデルを生成する際に使用した[MeCab](http://taku910.github.io/mecab/)用の辞書
+* 分散表現 (Word2VecやFastText) のモデル
+* 分散表現のモデルを生成する際に使用した[MeCab](http://taku910.github.io/mecab/)用の辞書 (Word2Vecのモデルを使用する場合のみ)
 
 ## 環境構築方法
 ### `front/build`ディレクトリがない場合のみ
@@ -50,7 +51,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 
 ### 共通
 1. 端末を起動します。
-1. `nano {このディレクトリ}/server/condigs/general.ini`コマンドを実行し、`[word2vec]`-`model path`と`[mecab]`-`dir path`を指定します。
+1. `nano {このディレクトリ}/server/condigs/general.ini`コマンドを実行し、`[word embedding]`と`[mecab]` (後者はWord2Vecのモデルを使用する場合のみ) の各項目を指定します。
 1. `cd {このディレクトリ}/server/src`コマンドを実行します。
 1. `pipenv install`コマンドを実行します。
 
@@ -86,7 +87,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
                 * PanelBody.js: PanelのBodyのContainerのテスト
             * reducers/: [Redux](https://redux.js.org/)のReducerのテストが格納されている
                 * index.js: ルートReducerのテスト
-                * showSimilarWords.js: Word2Vecによる計算結果の表示ActionのReducerのテスト
+                * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducerのテスト
         * actions/: [Redux](https://redux.js.org/)のActionCreatorが格納されている
             * index.js: ActionCreator
             * type.js: Actionのタイプ
@@ -108,7 +109,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
             * PanelBody.js: PanelのBodyのContainer
         * reducers/: [Redux](https://redux.js.org/)のReducerが格納されている
             * index.js: ルートReducer
-            * showSimilarWords.js: Word2Vecによる計算結果の表示ActionのReducer
+            * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducer
         * test_data/: テストで使用するデータが格納されている
         * translations/: メッセージリソースが格納されている
             * en.json: 英語のメッセージリソース

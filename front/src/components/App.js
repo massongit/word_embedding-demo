@@ -31,7 +31,7 @@ class App extends React.Component {
                 <InputPanel/>
                 {
                     (() => {
-                        // Word2Vecによる計算が行われていない場合には表示しない
+                        // 分散表現による計算が行われていない場合には表示しない
                         if (0 < this.props.similar.length) {
                             return (<OutputPanel/>)
                         }

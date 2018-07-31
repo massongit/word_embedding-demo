@@ -10,6 +10,7 @@ import json
 import logging
 import os
 import pathlib
+import pyfasttext
 
 import flask
 import flask_api.status
@@ -63,22 +64,28 @@ class OrderedCounter(collections.Counter, collections.OrderedDict):
     pass
 
 
-class Word2VecView(flask_classy.FlaskView):
+class WordEmbeddingView(flask_classy.FlaskView):
     """
-    Word2Vecによる計算結果を返すView
+    分散表現による計算結果を返すView
     """
 
     trailing_slash = False
 
     def __init__(self):
-        # Word2Vec
-        self.word2vec = gensim.models.KeyedVectors.load_word2vec_format(conf.get('general', 'word2vec', 'model path'))
+        if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
+            # 分散表現
+            self.word_embedding = pyfasttext.FastText(conf.get('general', 'word embedding', 'model path'))
+        else:  # Word2Vecのモデルを使用するとき
+            # 分散表現
+            self.word_embedding = gensim.models.KeyedVectors.load_word2vec_format(
+                conf.get('general', 'word embedding', 'model path'),
+                binary=bool(conf.get('general', 'word embedding', 'is binary')))
 
-        # MeCab
-        self.mecab = natto.MeCab({
-            'output_format_type': 'wakati',
-            'dicdir': conf.get('general', 'mecab', 'dir path')
-        })
+            # MeCab
+            self.mecab = natto.MeCab({
+                'output_format_type': 'wakati',
+                'dicdir': conf.get('general', 'mecab', 'dir path')
+            })
 
         self.pn = {
             'positive': 1,
@@ -99,10 +106,14 @@ class Word2VecView(flask_classy.FlaskView):
         counter = dict()
 
         for k in self.pn.keys():
+            words = list()
             if k in request:
-                words = [w_ for w in request[k] for w_ in self.mecab.parse(w).split()]
-            else:
-                words = list()
+                for w in request[k]:
+                    if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
+                        words.append(w)
+                    else:  # Word2Vecのモデルを使用するとき、MeCabによる単語分割を行う
+                        for w_ in self.mecab.parse(w).split():
+                            words.append(w_)
 
             counter[k] = OrderedCounter(words)
 
@@ -128,7 +139,7 @@ class Word2VecView(flask_classy.FlaskView):
             responce['similar'] = [{
                 'word': w,
                 'cosine': c
-            } for w, c in self.word2vec.most_similar(**responce)]
+            } for w, c in self.word_embedding.most_similar(**responce)]
         except ValueError:
             responce['similar'] = list()
 
@@ -136,7 +147,7 @@ class Word2VecView(flask_classy.FlaskView):
 
     def post(self):
         try:
-            app.logger.debug('/word2vec/ called!')
+            app.logger.debug('/wordembedding/ called!')
 
             # リクエスト
             request = flask.request.get_json()
@@ -171,7 +182,7 @@ if __name__ == '__main__':
         handler.setFormatter(logging.Formatter('[%(name)s %(asctime)s %(levelname)s] %(message)s'))
         logging.root.addHandler(handler)
 
-Word2VecView.register(app)
+WordEmbeddingView.register(app)
 
 if __name__ == '__main__':
     app.run(conf.get('general', 'server', 'host'), conf.get('general', 'server', 'port'), True, use_reloader=False)

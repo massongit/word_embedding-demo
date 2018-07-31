@@ -17,11 +17,11 @@ const checkSimilar = (similar) => {
 }
 
 /**
- * Word2Vecによる計算結果の表示ActionのReducer
+ * 分散表現による計算結果の表示ActionのReducer
  */
 export default handleActions(
     {
-        // Word2Vecによる計算結果の表示Actionのとき
+        // 分散表現による計算結果の表示Actionのとき
         [types.SHOW_SIMILAR_WORDS]: (state, action) => {
             if (action.payload.words && action.payload.words.similar) {
                 if (checkSimilar(action.payload.words.similar) && action.payload.keywords && action.payload.words && !action.payload.words.similar.includes(undefined)) {

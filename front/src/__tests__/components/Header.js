@@ -3,9 +3,9 @@ import Header from "../../components/Header"
 import {shallow} from "enzyme"
 
 describe("components/Header", () => {
-    it("『Word2Vec』という文字が含まれている", () => {
+    it("『Word Embedding』という文字が含まれている", () => {
         expect(shallow(
             <Header/>
-        ).children().contains("Word2Vec")).toBeTruthy()
+        ).children().contains("Word Embedding")).toBeTruthy()
     })
 })

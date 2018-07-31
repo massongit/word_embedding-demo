@@ -72,12 +72,12 @@ class Input extends React.Component {
         // キーワード
         const keywords = this.makeKeyWords()
 
-        // 以前の入力文とは異なる文章が入力されたとき、Word2Vecによる計算を行い、Word2Vecによる計算結果の表示Actionをdispatch
+        // 以前の入力文とは異なる文章が入力されたとき、分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatch
         if ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords)) {
             try {
                 this.props.dispatch(showSimilarWords({
                     keywords,
-                    words: await this.callWord2Vec(keywords)
+                    words: await this.callWordEmbedding(keywords)
                 }))
             } catch (er) {
                 alert(this.props.intl.formatMessage(
@@ -93,13 +93,13 @@ class Input extends React.Component {
     }
 
     /**
-     * Word2VecのAPIを呼び出す
+     * 分散表現のAPIを呼び出す
      * @param query {object} クエリ
      * @returns {Promise<*>} 計算結果
      */
-    async callWord2Vec(query) {
+    async callWordEmbedding(query) {
         return await (await fetch(
-            "/word2vec",
+            "/wordembedding",
             {
                 method: "POST",
                 headers: {

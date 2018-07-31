@@ -6,7 +6,7 @@ import keywords2 from "./keywords2"
 export const word = words.similar[0].word
 
 /**
- * Word2Vecによる計算結果の表示ActionのState
+ * 分散表現による計算結果の表示ActionのState
  * @type {{keywords: {negative: string[], positive: string[]}, words}}
  */
 export const showSimilarWordsState2 = {
@@ -15,7 +15,7 @@ export const showSimilarWordsState2 = {
 }
 
 /**
- * Word2Vecによる計算結果の表示ActionのState
+ * 分散表現による計算結果の表示ActionのState
  * @type {{keywords: {negative: string[], positive: string[]}, words}}
  */
 export const showSimilarWordsState = {

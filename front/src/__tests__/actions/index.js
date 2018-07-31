@@ -3,7 +3,7 @@ import {showSimilarWordsState} from "../../test_data"
 import {makeShowSimilarWordsAction} from "../reducers"
 
 /**
- * Word2Vecによる計算結果の表示Action
+ * 分散表現による計算結果の表示Action
  * @type {{type: string, payload: {keywords: string, words: *[]}}}
  */
 const showSimilarWordsAction = {

@@ -8,7 +8,7 @@ import {Jumbotron, Row} from "react-bootstrap"
 const Header = () => (
     <Row>
         <Jumbotron>
-            <h1>Word2Vec</h1>
+            <h1>Word Embedding</h1>
         </Jumbotron>
     </Row>
 )
