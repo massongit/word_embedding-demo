@@ -65,11 +65,13 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
     
     ```
 
-1. 以下のように`/etc/nginx/sites-enabled/word_embedding-demo`を作成します。  
+1. 以下のように`/etc/nginx/sites-available/{ドメイン名}`を作成します。  
 ※`TODO`部の指示通りに書き換えを行ってください。
 
-    ```/etc/nginx/sites-enabled/word_embedding-demo
+    ```/etc/nginx/sites-available/{ドメイン名}
     server {
+        # TODO: 以下を記述し、コメントアウトを解除
+        # server_name {ドメイン名};
         listen 80;
         
         # TODO: 以下を記述し、コメントアウトを解除
@@ -83,6 +85,8 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
     }
     
     ```
+
+1. `sudo ln -s /etc/nginx/sites-available/{ドメイン名} /etc/nginx/sites-enabled/{ドメイン名}`コマンドを実行し、シンボリックリンクを作成します。
 
 ### `front/build`ディレクトリがない場合のみ
 1. 端末を起動します。

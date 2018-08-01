@@ -99,7 +99,7 @@ class Input extends React.Component {
      */
     async callWordEmbedding(query) {
         return await (await fetch(
-            "/wordembedding",
+            "wordembedding",
             {
                 method: "POST",
                 headers: {
