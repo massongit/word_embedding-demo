@@ -5,13 +5,14 @@ import keywords from "../../test_data/keywords"
 import keywords2 from "../../test_data/keywords2"
 import loadingState from "../../test_data/loadingState"
 import emptyLoadingAction from "../../test_data/emptyLoadingAction"
+import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
+import {loading} from "../../actions"
 import {
     dispatchEqual,
     dispatchLoadingEqual,
     dispatchShowSimilarWordsEqual,
-    makeLoadingAction,
     makeShowSimilarWordsAction,
     storeEqual
 } from "./index"
@@ -25,15 +26,20 @@ import {
 
 const dispatchDoubleShowSimilarWordsEqual = (store, p, s) => {
     dispatchEqual(store, [
+        loading(loadingState),
         makeShowSimilarWordsAction(showSimilarWordsState),
-        makeShowSimilarWordsAction(p)
+        loading(initialLoadingState),
+        loading(loadingState),
+        makeShowSimilarWordsAction(p),
+        loading(initialLoadingState)
     ], s)
 }
 
 const dispatchShowSimilarWordsAndLoadingEqual = (store, p, s) => {
     dispatchEqual(store, [
+        loading(loadingState),
         makeShowSimilarWordsAction(showSimilarWordsState),
-        makeLoadingAction(p)
+        loading(p)
     ], s)
 }
 

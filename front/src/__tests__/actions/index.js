@@ -1,7 +1,8 @@
 import * as types from "../../actions/types"
 import loadingState from "../../test_data/loadingState"
+import {loading} from "../../actions"
 import {showSimilarWordsState} from "../../test_data"
-import {makeLoadingAction, makeShowSimilarWordsAction} from "../reducers"
+import {makeShowSimilarWordsAction} from "../reducers"
 
 /**
  * 分散表現による計算結果の表示Action
@@ -25,7 +26,7 @@ describe("actions/index", () => {
     it("valueからActionを生成する", () => {
         for (const v of [
             [makeShowSimilarWordsAction(showSimilarWordsState), showSimilarWordsAction],
-            [makeLoadingAction(loadingState), loadingAction]
+            [loading(loadingState), loadingAction]
         ]) {
             expect(v[0]).toEqual(v[1])
         }
@@ -34,7 +35,7 @@ describe("actions/index", () => {
     it("valueから異常値を除外してActionを生成する", () => {
         for (const v of [
             [makeShowSimilarWordsAction, showSimilarWordsState, showSimilarWordsAction],
-            [makeLoadingAction, loadingState, loadingAction]
+            [loading, loadingState, loadingAction]
         ]) {
             expect(v[0]({
                 ...v[1],

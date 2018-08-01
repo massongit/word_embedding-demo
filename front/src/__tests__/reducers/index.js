@@ -27,16 +27,6 @@ export const makeShowSimilarWordsAction = ps => {
     }
 }
 
-export const makeLoadingAction = ps => {
-    if (ps instanceof Array) {
-        return ps.map(p => (
-            loading(p)
-        ))
-    } else {
-        return loading(ps)
-    }
-}
-
 export const storeEqual = (store, s) => {
     expect(store.getState()).toEqual(s)
 }
@@ -47,11 +37,16 @@ export const dispatchEqual = (store, p, s) => {
 }
 
 export const dispatchShowSimilarWordsEqual = (store, p, s) => {
-    dispatchEqual(store, makeShowSimilarWordsAction(p), s)
+    dispatchEqual(store,
+        [
+            loading(loadingState),
+            makeShowSimilarWordsAction(p),
+            loading(initialLoadingState)
+        ], s)
 }
 
 export const dispatchLoadingEqual = (store, p, s) => {
-    dispatchEqual(store, makeLoadingAction(p), s)
+    dispatchEqual(store, loading(p), s)
 }
 
 let store
