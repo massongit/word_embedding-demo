@@ -1,5 +1,7 @@
 import deepcopy from "deepcopy"
 import rootReducer from "../../reducers"
+import words from "../../test_data/words"
+import keywords from "../../test_data/keywords"
 import loadingState from "../../test_data/loadingState"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
@@ -52,6 +54,17 @@ export const dispatchShowSimilarWordsEqual = (store, p, s) => {
 
 export const dispatchLoadingEqual = (store, p, s) => {
     dispatchEqual(store, makeLoadingAction(p), s)
+}
+
+export const dispatchShowSimilarWordsIncludeUndefinedWordEqual = (store, s) => {
+    dispatchShowSimilarWordsEqual(store, {
+        keywords,
+        words: {
+            positive: words.positive,
+            negative: words.negative,
+            similar: words.similar.concat(undefined)
+        }
+    }, s)
 }
 
 let store

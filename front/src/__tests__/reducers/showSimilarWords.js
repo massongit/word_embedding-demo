@@ -11,16 +11,12 @@ import {
     dispatchEqual,
     dispatchLoadingEqual,
     dispatchShowSimilarWordsEqual,
+    dispatchShowSimilarWordsIncludeUndefinedWordEqual,
     makeLoadingAction,
     makeShowSimilarWordsAction,
     storeEqual
 } from "./index"
-import {
-    showSimilarWordsParameterInvalidKeyWords,
-    showSimilarWordsState,
-    showSimilarWordsState2,
-    word
-} from "../../test_data"
+import {showSimilarWordsParameterInvalidKeyWords, showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
 
 const dispatchDoubleShowSimilarWordsEqual = (store, p, s) => {
     dispatchEqual(store, [
@@ -75,16 +71,7 @@ describe("reducers/showSimilarWords", () => {
     })
 
     it("初期状態において、undefinedな要素を含むwordを含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
-            keywords,
-            words: {
-                positive: words.positive,
-                negative: words.negative,
-                similar: words.similar.concat({
-                    word
-                })
-            }
-        }, initialShowSimilarWordsState)
+        dispatchShowSimilarWordsIncludeUndefinedWordEqual(store, initialShowSimilarWordsState)
     })
 
     it("初期状態において、loadingのActionが渡されたとき、Stateを変更しない", () => {

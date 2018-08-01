@@ -7,16 +7,12 @@ import {
     dispatchEqual,
     dispatchLoadingEqual,
     dispatchShowSimilarWordsEqual,
+    dispatchShowSimilarWordsIncludeUndefinedWordEqual,
     makeLoadingAction,
     makeShowSimilarWordsAction,
     storeEqual
 } from "./index"
-import {
-    showSimilarWordsParameterInvalidKeyWords,
-    showSimilarWordsState,
-    showSimilarWordsState2,
-    word
-} from "../../test_data"
+import {showSimilarWordsParameterInvalidKeyWords, showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
 import words from "../../test_data/words"
 import keywords from "../../test_data/keywords"
 import keywords2 from "../../test_data/keywords2"
@@ -83,16 +79,7 @@ describe("reducers/loading", () => {
     })
 
     it("初期状態において、undefinedな要素を含むwordを含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
-            keywords,
-            words: {
-                positive: words.positive,
-                negative: words.negative,
-                similar: words.similar.concat({
-                    word
-                })
-            }
-        }, initialLoadingState)
+        dispatchShowSimilarWordsIncludeUndefinedWordEqual(store, initialLoadingState)
     })
 
     it("初期状態以外のStateにおいて、loadingのActionからloadingのStateを生成する", () => {
