@@ -21,28 +21,25 @@ const loadingAction = {
     payload: loadingState
 }
 
-describe("actions/index/showSimilarWords", () => {
+describe("actions/index", () => {
     it("valueからActionを生成する", () => {
-        expect(makeShowSimilarWordsAction(showSimilarWordsState)).toEqual(showSimilarWordsAction)
+        for (const v of [
+            [makeShowSimilarWordsAction(showSimilarWordsState), showSimilarWordsAction],
+            [makeLoadingAction(loadingState), loadingAction]
+        ]) {
+            expect(v[0]).toEqual(v[1])
+        }
     })
 
     it("valueから異常値を除外してActionを生成する", () => {
-        expect(makeShowSimilarWordsAction({
-            ...showSimilarWordsState,
-            wrong_test: "wrong!"
-        })).toEqual(showSimilarWordsAction)
-    })
-})
-
-describe("actions/index/loading", () => {
-    it("valueからActionを生成する", () => {
-        expect(makeLoadingAction(loadingState)).toEqual(loadingAction)
-    })
-
-    it("valueから異常値を除外してActionを生成する", () => {
-        expect(makeLoadingAction({
-            ...loadingState,
-            wrong_test: "wrong!"
-        })).toEqual(loadingAction)
+        for (const v of [
+            [makeShowSimilarWordsAction, showSimilarWordsState, showSimilarWordsAction],
+            [makeLoadingAction, loadingState, loadingAction]
+        ]) {
+            expect(v[0]({
+                ...v[1],
+                wrong_test: "wrong!"
+            })).toEqual(v[2])
+        }
     })
 })
