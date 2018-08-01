@@ -139,6 +139,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
                 * PanelBody.js: PanelのBodyのContainerのテスト
             * reducers/: [Redux](https://redux.js.org/)のReducerのテストが格納されている
                 * index.js: ルートReducerのテスト
+                * loading.js: ローディングActionのテスト
                 * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducerのテスト
         * actions/: [Redux](https://redux.js.org/)のActionCreatorが格納されている
             * index.js: ActionCreator
@@ -161,6 +162,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
             * PanelBody.js: PanelのBodyのContainer
         * reducers/: [Redux](https://redux.js.org/)のReducerが格納されている
             * index.js: ルートReducer
+            * loading.js: ローディングActionのReducer
             * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducer
         * test_data/: テストで使用するデータが格納されている
         * translations/: メッセージリソースが格納されている
