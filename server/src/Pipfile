@@ -11,6 +11,7 @@ natto-py = "*"
 flask-classy = "*"
 cython = "*"
 pyfasttext = "*"
+uwsgi = "*"
 
 [dev-packages]
 pytest = "*"
