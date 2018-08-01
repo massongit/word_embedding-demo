@@ -22,6 +22,18 @@ const rootStateAfterShowSimilarWords = {
     showSimilarWords: showSimilarWordsState
 }
 
+const checkContainShowSimilarWords = (store, inputComponent, w) => {
+    let isExpect = false
+    const action_ = makeShowSimilarWordsAction(w)
+    for (const action of store.getActions()) {
+        if (action.type === types.SHOW_SIMILAR_WORDS) {
+            expect(action).toEqual(action_)
+            isExpect = true
+        }
+    }
+    expect(isExpect).toBeTruthy()
+}
+
 const keywords_input = "-男 王 女"
 
 loadTranslation("./src/translations/ja.json")
@@ -103,15 +115,7 @@ describe("containers/Input", () => {
         fetch.mockResponse(JSON.stringify(words))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)
-        let isExpect = false
-        const action_ = makeShowSimilarWordsAction(showSimilarWordsState)
-        for (const action of store.getActions()) {
-            if (action.type === types.SHOW_SIMILAR_WORDS) {
-                expect(action).toEqual(action_)
-                isExpect = true
-            }
-        }
-        expect(isExpect).toBeTruthy()
+        checkContainShowSimilarWords(store, inputComponent, showSimilarWordsState)
     })
 
     it("前回と同じ入力内容でonSubmitイベントを呼び出したとき、fetchやshowSimilarWordsのdispatchが行われない", async () => {
@@ -140,14 +144,6 @@ describe("containers/Input", () => {
         fetch.mockResponse(JSON.stringify(words2))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)
-        let isExpect = false
-        const action_ = makeShowSimilarWordsAction(showSimilarWordsState2)
-        for (const action of store.getActions()) {
-            if (action.type === types.SHOW_SIMILAR_WORDS) {
-                expect(action).toEqual(action_)
-                isExpect = true
-            }
-        }
-        expect(isExpect).toBeTruthy()
+        checkContainShowSimilarWords(store, inputComponent, showSimilarWordsState2)
     })
 })
