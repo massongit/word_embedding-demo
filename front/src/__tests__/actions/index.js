@@ -5,7 +5,7 @@ import {makeLoadingAction, makeShowSimilarWordsAction} from "../reducers"
 
 /**
  * 分散表現による計算結果の表示Action
- * @type {{type: string, payload: {keywords: string, words: *[]}}}
+ * @type {{type: string, payload: {keywords: {negative: string[], positive: string[]}, words}}}
  */
 const showSimilarWordsAction = {
     type: types.SHOW_SIMILAR_WORDS,
