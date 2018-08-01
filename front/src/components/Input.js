@@ -3,8 +3,10 @@ import fetch from "node-fetch"
 import PropTypes from "prop-types"
 import {Button, Form, FormControl, InputGroup} from "react-bootstrap"
 import {FormattedMessage, intlShape} from "react-intl"
-import {showSimilarWords} from "../actions"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {loading, showSimilarWords} from "../actions"
 import {propTypesPN} from "./KeyWords"
+import {faSpinner} from "@fortawesome/free-solid-svg-icons"
 
 /**
  * 入力部
@@ -13,6 +15,7 @@ class Input extends React.Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
         keywords: PropTypes.shape(propTypesPN).isRequired,
+        loading: PropTypes.bool.isRequired,
         intl: intlShape.isRequired
     }
 
@@ -69,6 +72,10 @@ class Input extends React.Component {
         // サーバーへのSubmitが行われないようにする
         ev.preventDefault()
 
+        this.props.dispatch(loading({
+            loading: true
+        }))
+
         // キーワード
         const keywords = this.makeKeyWords()
 
@@ -88,6 +95,10 @@ class Input extends React.Component {
                         message: er.message
                     }
                 ))
+            } finally {
+                this.props.dispatch(loading({
+                    loading: false
+                }))
             }
         }
     }
@@ -130,7 +141,22 @@ class Input extends React.Component {
                         }}
                     />
                     <InputGroup.Button>
-                        <Button type="submit">
+                        <Button
+                            type="submit"
+                            disabled={this.props.loading}
+                        >
+                            {
+                                (() => {
+                                    if (this.props.loading) {
+                                        return (
+                                            <FontAwesomeIcon
+                                                icon={faSpinner}
+                                                spin
+                                            />
+                                        )
+                                    }
+                                })()
+                            }
                             <FormattedMessage id="calculate"/>
                         </Button>
                     </InputGroup.Button>

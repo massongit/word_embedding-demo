@@ -5,7 +5,9 @@ import fetch from "node-fetch"
 import configureMockStore from "redux-mock-store"
 import words2 from "../../test_data/words2"
 import words from "../../test_data/words"
+import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
+import * as types from "../../actions/types"
 import {Form, FormControl} from "react-bootstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
 import {showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
@@ -16,6 +18,7 @@ export const eventMock = {
 }
 
 const rootStateAfterShowSimilarWords = {
+    loading: initialLoadingState,
     showSimilarWords: showSimilarWordsState
 }
 
@@ -30,6 +33,7 @@ describe("containers/Input", () => {
 
     it("Componentが正しく配置されている", () => {
         const store = configureMockStore([thunk])({
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
         const inputComponent = shallowWithIntl(
@@ -42,6 +46,7 @@ describe("containers/Input", () => {
 
     it("Formになっている", () => {
         const store = configureMockStore([thunk])({
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
         const inputComponent = mountWithIntl(
@@ -54,6 +59,7 @@ describe("containers/Input", () => {
 
     it("onSubmitイベントが呼び出されたとき、サーバーへのSubmitが行われない", async () => {
         const store = configureMockStore([thunk])({
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
         const inputComponent = mountWithIntl(
@@ -65,8 +71,9 @@ describe("containers/Input", () => {
         expect(eventMock.preventDefault.mock.calls).toHaveLength(1)
     })
 
-    it("入力文が空の状態で、onSubmitイベントが呼び出されたとき、fetchとdispatchが行われない", async () => {
+    it("入力文が空の状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが行われない", async () => {
         const store = configureMockStore([thunk])({
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
         const inputComponent = mountWithIntl(
@@ -77,11 +84,14 @@ describe("containers/Input", () => {
         inputComponent.find(FormControl).children().instance().value = ""
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(0)
-        expect(store.getActions()).toHaveLength(0)
+        for (const action of store.getActions()) {
+            expect(action.type).not.toEqual([types.SHOW_SIMILAR_WORDS])
+        }
     })
 
-    it("入力文が入力された状態で、onSubmitイベントが呼び出されたとき、fetchとdispatchが正常に行われる", async () => {
+    it("入力文が入力された状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが正常に行われる", async () => {
         const store = configureMockStore([thunk])({
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
         const inputComponent = mountWithIntl(
@@ -93,10 +103,18 @@ describe("containers/Input", () => {
         fetch.mockResponse(JSON.stringify(words))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)
-        expect(store.getActions()).toEqual([makeShowSimilarWordsAction(showSimilarWordsState)])
+        let isExpect = false
+        const action_ = makeShowSimilarWordsAction(showSimilarWordsState)
+        for (const action of store.getActions()) {
+            if (action.type === types.SHOW_SIMILAR_WORDS) {
+                expect(action).toEqual(action_)
+                isExpect = true
+            }
+        }
+        expect(isExpect).toBeTruthy()
     })
 
-    it("前回と同じ入力内容でonSubmitイベントを呼び出したとき、fetchやdispatchが行われない", async () => {
+    it("前回と同じ入力内容でonSubmitイベントを呼び出したとき、fetchやshowSimilarWordsのdispatchが行われない", async () => {
         const store = configureMockStore([thunk])(rootStateAfterShowSimilarWords)
         const inputComponent = mountWithIntl(
             <Input
@@ -106,10 +124,12 @@ describe("containers/Input", () => {
         inputComponent.find(FormControl).children().instance().value = keywords_input
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(0)
-        expect(store.getActions()).toHaveLength(0)
+        for (const action of store.getActions()) {
+            expect(action.type).not.toEqual(types.SHOW_SIMILAR_WORDS)
+        }
     })
 
-    it("前回とは違う入力内容でonSubmitイベントを呼び出したとき、fetchやdispatchが正常に行われる", async () => {
+    it("前回とは違う入力内容でonSubmitイベントを呼び出したとき、fetchやshowSimilarWordsのdispatchが正常に行われる", async () => {
         const store = configureMockStore([thunk])(rootStateAfterShowSimilarWords)
         const inputComponent = mountWithIntl(
             <Input
@@ -120,6 +140,14 @@ describe("containers/Input", () => {
         fetch.mockResponse(JSON.stringify(words2))
         await inputComponent.find(Form).props().onSubmit(eventMock)
         expect(fetch.mock.calls).toHaveLength(1)
-        expect(store.getActions()).toEqual([makeShowSimilarWordsAction(showSimilarWordsState2)])
+        let isExpect = false
+        const action_ = makeShowSimilarWordsAction(showSimilarWordsState2)
+        for (const action of store.getActions()) {
+            if (action.type === types.SHOW_SIMILAR_WORDS) {
+                expect(action).toEqual(action_)
+                isExpect = true
+            }
+        }
+        expect(isExpect).toBeTruthy()
     })
 })

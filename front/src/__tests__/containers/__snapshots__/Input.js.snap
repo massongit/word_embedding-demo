@@ -113,6 +113,7 @@ ShallowWrapper {
         "negative": Array [],
         "positive": Array [],
       },
+      "loading": false,
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -195,6 +196,7 @@ ShallowWrapper {
           "negative": Array [],
           "positive": Array [],
         },
+        "loading": false,
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

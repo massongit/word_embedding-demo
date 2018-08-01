@@ -1,3 +1,4 @@
+import loading from "./loading"
 import showSimilarWords from "./showSimilarWords"
 import {combineReducers} from "redux"
 
@@ -5,5 +6,6 @@ import {combineReducers} from "redux"
  * ルートReducer
  */
 export default combineReducers({
-    showSimilarWords
+    showSimilarWords,
+    loading
 })

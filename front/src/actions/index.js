@@ -9,3 +9,11 @@ export const showSimilarWords = createAction(types.SHOW_SIMILAR_WORDS, parameter
     words: parameter.words,
     keywords: parameter.keywords
 }))
+
+/**
+ * ローディングActionのActionCreator
+ * @type {function}
+ */
+export const loading = createAction(types.LOADING, parameter => ({
+    loading: parameter.loading
+}))

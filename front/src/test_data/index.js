@@ -22,3 +22,8 @@ export const showSimilarWordsState = {
     keywords,
     words
 }
+
+export const showSimilarWordsParameterInvalidKeyWords = {
+    sentence: keywords,
+    words: words2
+}

@@ -3,7 +3,8 @@ import {connect} from "react-redux"
 import {injectIntl} from "react-intl"
 
 const mapStateToProps = state => ({
-    keywords: state.showSimilarWords.keywords
+    keywords: state.showSimilarWords.keywords,
+    loading: state.loading.loading
 })
 
 /**
