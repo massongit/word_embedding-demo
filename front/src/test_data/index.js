@@ -27,3 +27,21 @@ export const showSimilarWordsParameterInvalidKeyWords = {
     sentence: keywords,
     words: words2
 }
+
+export const showSimilarWordsStateIncludeUndefinedWord = {
+    keywords,
+    words: {
+        positive: words.positive,
+        negative: words.negative,
+        similar: words.similar.concat(undefined)
+    }
+}
+
+export const showSimilarWordsStateIncludeUndefinedWord2 = {
+    keywords: keywords2,
+    words: {
+        positive: words2.positive,
+        negative: words2.negative,
+        similar: words2.similar.concat(undefined)
+    }
+}
