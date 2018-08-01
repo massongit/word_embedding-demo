@@ -72,15 +72,17 @@ class Input extends React.Component {
         // サーバーへのSubmitが行われないようにする
         ev.preventDefault()
 
-        this.props.dispatch(loading({
-            loading: true
-        }))
-
         // キーワード
         const keywords = this.makeKeyWords()
 
-        // 以前の入力文とは異なる文章が入力されたとき、分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatch
+        // 以前の入力文とは異なる文章が入力されたとき
         if ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords)) {
+            // ローディングアイコンを表示する
+            this.props.dispatch(loading({
+                loading: true
+            }))
+
+            // 分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatch
             try {
                 this.props.dispatch(showSimilarWords({
                     keywords,
@@ -95,11 +97,12 @@ class Input extends React.Component {
                         message: er.message
                     }
                 ))
-            } finally {
-                this.props.dispatch(loading({
-                    loading: false
-                }))
             }
+
+            // ローディングアイコンを消す
+            this.props.dispatch(loading({
+                loading: false
+            }))
         }
     }
 
