@@ -46,6 +46,11 @@
     * State
         * `state.showSimilarWords.keywords`: 入力したキーワード (連想配列)
         * `state.showSimilarWords.words`: 分散表現による計算結果 (分散表現による計算用APIのレスポンス)
+* loading: ローディングAction
+    * Action
+        * `action.payload.loading`: 分散表現による計算結果を取得中かどうか (boolean)
+    * State
+        * `state.loading.loading`: 分散表現による計算結果を取得中かどうか (boolean)
 
 ## 分散表現による計算用API
 ### リクエスト
