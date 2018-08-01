@@ -104,8 +104,7 @@ class WordEmbeddingView(flask_classy.FlaskView):
             if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
                 words.append(keyword)
             else:  # Word2Vecのモデルを使用するとき
-                for keyword_ in self.mecab.parse(keyword).split():
-                    words.append(keyword_)
+                words += self.mecab.parse(keyword).split()
 
         return words
 
