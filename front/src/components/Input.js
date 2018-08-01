@@ -128,6 +128,21 @@ class Input extends React.Component {
         })).json()
     }
 
+    /**
+     * ローディングアイコンを描画する
+     * @returns {*} ローディングアイコン
+     */
+    renderSpinner() {
+        if (this.props.loading) {
+            return (
+                <FontAwesomeIcon
+                    icon={faSpinner}
+                    spin
+                />
+            )
+        }
+    }
+
     render() {
         return (
             <Form
@@ -145,18 +160,7 @@ class Input extends React.Component {
                             type="submit"
                             disabled={this.props.loading}
                         >
-                            {
-                                (() => {
-                                    if (this.props.loading) {
-                                        return (
-                                            <FontAwesomeIcon
-                                                icon={faSpinner}
-                                                spin
-                                            />
-                                        )
-                                    }
-                                })()
-                            }
+                            {this.renderSpinner()}
                             <FormattedMessage id="calculate"/>
                         </Button>
                     </InputGroup.Button>
