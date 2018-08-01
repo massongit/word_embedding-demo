@@ -60,17 +60,6 @@ describe("reducers/showSimilarWords", () => {
     })
 
     it("初期状態において、undefinedな要素を含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
-            keywords,
-            words: {
-                positive: words.positive,
-                negative: words.negative,
-                similar: words.similar.concat(undefined)
-            }
-        }, initialShowSimilarWordsState)
-    })
-
-    it("初期状態において、undefinedな要素を含むwordを含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
         dispatchShowSimilarWordsIncludeUndefinedWordEqual(store, initialShowSimilarWordsState)
     })
 
