@@ -55,6 +55,7 @@ def test_analysis_word_embedding(client, conf):
     :param conf: 設定
     """
     do_word_embedding_test(client, {
+        'method': 'fasttext',
         'negative': [
             '男'
         ],

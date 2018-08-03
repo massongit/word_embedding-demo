@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Radio, FormGroup} from "react-bootstrap"
+import {FormGroup, Radio} from "react-bootstrap"
 import {intlShape} from "react-intl"
 import {setMethod} from "../actions"
 import general from "../configs/general"

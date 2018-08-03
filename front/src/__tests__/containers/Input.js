@@ -3,8 +3,10 @@ import Input from "../../containers/Input"
 import thunk from "redux-thunk"
 import fetch from "node-fetch"
 import configureMockStore from "redux-mock-store"
-import words2 from "../../test_data/words2"
 import words from "../../test_data/words"
+import words2 from "../../test_data/words2"
+import setMethodState from "../../test_data/setMethodState"
+import setMethodsState from "../../test_data/setMethodsState"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import * as types from "../../actions/types"
@@ -18,6 +20,8 @@ export const eventMock = {
 }
 
 const rootStateAfterShowSimilarWords = {
+    setMethod: setMethodState,
+    setMethods: setMethodsState,
     loading: initialLoadingState,
     showSimilarWords: showSimilarWordsState
 }
@@ -45,6 +49,8 @@ describe("containers/Input", () => {
 
     it("Componentが正しく配置されている", () => {
         const store = configureMockStore([thunk])({
+            setMethod: setMethodState,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -58,6 +64,8 @@ describe("containers/Input", () => {
 
     it("Formになっている", () => {
         const store = configureMockStore([thunk])({
+            setMethod: setMethodState,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -71,6 +79,8 @@ describe("containers/Input", () => {
 
     it("onSubmitイベントが呼び出されたとき、サーバーへのSubmitが行われない", async () => {
         const store = configureMockStore([thunk])({
+            setMethod: setMethodState,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -85,6 +95,8 @@ describe("containers/Input", () => {
 
     it("入力文が空の状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが行われない", async () => {
         const store = configureMockStore([thunk])({
+            setMethod: setMethodState,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -103,6 +115,8 @@ describe("containers/Input", () => {
 
     it("入力文が入力された状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが正常に行われる", async () => {
         const store = configureMockStore([thunk])({
+            setMethod: setMethodState,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })

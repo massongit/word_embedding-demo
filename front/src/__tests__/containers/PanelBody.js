@@ -5,14 +5,28 @@ import rootReducer from "../../reducers/index"
 import {Panel} from "react-bootstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
 import {createStore} from "redux"
+import {functions2} from "./App"
 
 loadTranslation("./src/translations/ja.json")
 
+let store
+
 describe("containers/PanelBody", () => {
+    beforeEach(() => {
+        store = createStore(rootReducer)
+        for (const f of functions2) {
+            if (f) {
+                f(store)
+            }
+        }
+    })
+
     it("Componentが正しく配置されている", () => {
         const panelBodyComponent = shallowWithIntl(
             <PanelBody messageId="description.input">
-                <Input/>
+                <Input
+                    store={store}
+                />
             </PanelBody>
         ).dive()
         expect(panelBodyComponent).toMatchSnapshot()
@@ -22,7 +36,7 @@ describe("containers/PanelBody", () => {
         const panelBodyComponent = mountWithIntl(
             <PanelBody messageId="description.input">
                 <Input
-                    store={createStore(rootReducer)}
+                    store={store}
                 />
             </PanelBody>
         )

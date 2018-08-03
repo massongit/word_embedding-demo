@@ -2,6 +2,8 @@ import deepcopy from "deepcopy"
 import rootReducer from "../../reducers"
 import loadingState from "../../test_data/loadingState"
 import initialLoadingState from "../../test_data/initialLoadingState"
+import initialSetMethodState from "../../test_data/initialSetMethodState"
+import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
 import {loading, showSimilarWords} from "../../actions"
@@ -58,6 +60,8 @@ describe("reducers/index", () => {
 
     it("初期状態を正しく保持している", () => {
         storeEqual(store, {
+            setMethod: initialSetMethodState,
+            setMethods: initialSetMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -65,6 +69,8 @@ describe("reducers/index", () => {
 
     it("初期状態からloadingへStateが遷移した際に、正しいStateを返す", () => {
         dispatchLoadingEqual(store, loadingState, {
+            setMethod: initialSetMethodState,
+            setMethods: initialSetMethodsState,
             loading: loadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
@@ -72,6 +78,8 @@ describe("reducers/index", () => {
 
     it("初期状態からshowSimilarWordsへStateが遷移した際に、正しいStateを返す", () => {
         dispatchShowSimilarWordsEqual(store, showSimilarWordsState, {
+            setMethod: initialSetMethodState,
+            setMethods: initialSetMethodsState,
             loading: initialLoadingState,
             showSimilarWords: showSimilarWordsState
         })

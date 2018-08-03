@@ -3,11 +3,24 @@ import App from "../../containers/App"
 import OutputPanel from "../../components/OutputPanel"
 import InputPanel from "../../components/InputPanel"
 import rootReducer from "../../reducers"
+import setMethodState from "../../test_data/setMethodState"
+import setMethodsState from "../../test_data/setMethodsState"
 import {shallow} from "enzyme"
 import {createStore} from "redux"
 import {doSnapshot, functions} from "./KeyWords"
+import {dispatchActions} from "../reducers"
+import {setMethod, setMethods} from "../../actions"
 
-const functions2 = [undefined, functions]
+export const functions2 = [
+    undefined,
+    store => {
+        dispatchActions(store, setMethods(setMethodsState))
+    },
+    store => {
+        dispatchActions(store, setMethod(setMethodState))
+    },
+    functions
+]
 
 let store
 
@@ -36,13 +49,13 @@ describe("containers/PanelBody", () => {
             if (f) {
                 f(store)
             }
-
-            expect(beforeProcess().children().contains(<InputPanel/>)).toBeTruthy()
         }
+
+        expect(beforeProcess().children().contains(<InputPanel/>)).toBeTruthy()
     })
 
     it("子要素にOutputPanelが正しく配置される", () => {
-        for (const v of [[functions2[0], false], [functions2[1], true], [functions2[2], true]]) {
+        for (const v of [[functions2[0], false], [functions2[1], false], [functions2[2], false], [functions2[3], true]]) {
             if (v[0]) {
                 v[0](store)
             }

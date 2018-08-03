@@ -78,7 +78,7 @@ class Input extends React.Component {
         const keywords = this.makeKeyWords()
 
         // 以前の入力文とは異なる文章が入力されたとき
-        if (this.props.method !== this.props.prevMethod || ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords))) {
+        if ((0 < keywords.positive.length || 0 < keywords.negative.length) && (this.props.method !== this.props.prevMethod || JSON.stringify(keywords) !== JSON.stringify(this.props.keywords))) {
             // ローディングアイコンを表示する
             this.props.dispatch(loading({
                 loading: true

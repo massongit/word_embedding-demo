@@ -1,0 +1,6 @@
+{
+  "methods": [
+    "word2vec",
+    "fasttext"
+  ]
+}

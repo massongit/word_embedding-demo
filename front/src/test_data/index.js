@@ -5,13 +5,16 @@ import keywords2 from "./keywords2"
 
 export const word = words.similar[0].word
 
+const method = "fasttext"
+
 /**
  * 分散表現による計算結果の表示ActionのState
  * @type {{keywords: {negative: string[], positive: string[]}, words}}
  */
 export const showSimilarWordsState2 = {
     keywords: keywords2,
-    words: words2
+    words: words2,
+    method
 }
 
 /**
@@ -20,7 +23,8 @@ export const showSimilarWordsState2 = {
  */
 export const showSimilarWordsState = {
     keywords,
-    words
+    words,
+    method
 }
 
 export const showSimilarWordsParameterInvalidKeyWords = {
