@@ -102,6 +102,32 @@ class Input extends React.Component {
     }
 
     /**
+     * 分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatchする
+     * @param keywords キーワード
+     */
+    async dispatchSimilarWords(keywords) {
+        try {
+            this.props.dispatch(showSimilarWords({
+                keywords,
+                method: this.props.method,
+                words: await this.callWordEmbedding({
+                    ...keywords,
+                    method: this.props.method
+                })
+            }))
+        } catch (er) {
+            alert(this.props.intl.formatMessage(
+                {
+                    id: "errorMessage.predict"
+                },
+                {
+                    message: er.message
+                }
+            ))
+        }
+    }
+
+    /**
      * onSubmitイベント
      * @param ev イベント
      */
@@ -118,25 +144,7 @@ class Input extends React.Component {
             this.loading(true)
 
             // 分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatch
-            try {
-                this.props.dispatch(showSimilarWords({
-                    keywords,
-                    words: await this.callWordEmbedding({
-                        ...keywords,
-                        method: this.props.method
-                    }),
-                    method: this.props.method
-                }))
-            } catch (er) {
-                alert(this.props.intl.formatMessage(
-                    {
-                        id: "errorMessage.predict"
-                    },
-                    {
-                        message: er.message
-                    }
-                ))
-            }
+            await this.dispatchSimilarWords(keywords)
 
             // ローディングアイコンを消す
             this.loading(false)
