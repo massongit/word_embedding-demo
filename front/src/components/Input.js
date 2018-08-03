@@ -77,6 +77,31 @@ class Input extends React.Component {
     }
 
     /**
+     * 分散表現のAPIを呼び出す
+     * @param query {object} クエリ
+     * @returns {Promise<*>} 計算結果
+     */
+    async callWordEmbedding(query) {
+        return await (await fetch(
+            "wordembedding",
+            {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(query)
+            }
+        ).then(res => {
+            if (res.ok) {
+                return res
+            } else {
+                throw new Error(res.statusText)
+            }
+        })).json()
+    }
+
+    /**
      * onSubmitイベント
      * @param ev イベント
      */
@@ -116,31 +141,6 @@ class Input extends React.Component {
             // ローディングアイコンを消す
             this.loading(false)
         }
-    }
-
-    /**
-     * 分散表現のAPIを呼び出す
-     * @param query {object} クエリ
-     * @returns {Promise<*>} 計算結果
-     */
-    async callWordEmbedding(query) {
-        return await (await fetch(
-            "wordembedding",
-            {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(query)
-            }
-        ).then(res => {
-            if (res.ok) {
-                return res
-            } else {
-                throw new Error(res.statusText)
-            }
-        })).json()
     }
 
     /**
