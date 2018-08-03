@@ -34,7 +34,8 @@ ShallowWrapper {
               "description.input.supplement.2": "足し算を行う場合には、単語の先頭に『+』を付けることができます (基本的には付けなくても問題ありませんが、単語が『+』や『-』で始まる場合には必ず付けてください)。",
               "description.method": "以下から手法を選択してください。",
               "description.word2vec": "2013年にGoogle社によって提唱された手法であり、自然言語処理の様々な分野で用いられています。",
-              "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+              "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。
+        これを利用して、単語の足し算や引き算を行うことができます。",
               "errorMessage.default": "エラーが発生しました: {message}",
               "errorMessage.predict": "計算中にエラーが発生しました: {message}",
               "header.candidate": "候補",
@@ -102,7 +103,8 @@ ShallowWrapper {
           "description.input.supplement.2": "足し算を行う場合には、単語の先頭に『+』を付けることができます (基本的には付けなくても問題ありませんが、単語が『+』や『-』で始まる場合には必ず付けてください)。",
           "description.method": "以下から手法を選択してください。",
           "description.word2vec": "2013年にGoogle社によって提唱された手法であり、自然言語処理の様々な分野で用いられています。",
-          "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+          "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。
+これを利用して、単語の足し算や引き算を行うことができます。",
           "errorMessage.default": "エラーが発生しました: {message}",
           "errorMessage.predict": "計算中にエラーが発生しました: {message}",
           "header.candidate": "候補",
@@ -225,7 +227,8 @@ ShallowWrapper {
             "description.input.supplement.2": "足し算を行う場合には、単語の先頭に『+』を付けることができます (基本的には付けなくても問題ありませんが、単語が『+』や『-』で始まる場合には必ず付けてください)。",
             "description.method": "以下から手法を選択してください。",
             "description.word2vec": "2013年にGoogle社によって提唱された手法であり、自然言語処理の様々な分野で用いられています。",
-            "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+            "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。
+これを利用して、単語の足し算や引き算を行うことができます。",
             "errorMessage.default": "エラーが発生しました: {message}",
             "errorMessage.predict": "計算中にエラーが発生しました: {message}",
             "header.candidate": "候補",
@@ -349,7 +352,8 @@ ShallowWrapper {
           "description.input.supplement.2": "足し算を行う場合には、単語の先頭に『+』を付けることができます (基本的には付けなくても問題ありませんが、単語が『+』や『-』で始まる場合には必ず付けてください)。",
           "description.method": "以下から手法を選択してください。",
           "description.word2vec": "2013年にGoogle社によって提唱された手法であり、自然言語処理の様々な分野で用いられています。",
-          "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+          "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。
+これを利用して、単語の足し算や引き算を行うことができます。",
           "errorMessage.default": "エラーが発生しました: {message}",
           "errorMessage.predict": "計算中にエラーが発生しました: {message}",
           "header.candidate": "候補",

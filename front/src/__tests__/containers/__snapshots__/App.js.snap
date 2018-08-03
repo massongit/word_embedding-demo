@@ -247,7 +247,7 @@ ShallowWrapper {
       "bsClass": "container",
       "children": Array [
         <Header />,
-        <DescriptionPanel />,
+        <InjectIntl(DescriptionPanel) />,
         <MethodPanel />,
         undefined,
         undefined,
@@ -269,7 +269,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {},
         "ref": null,
         "rendered": null,
@@ -298,7 +298,7 @@ ShallowWrapper {
         "bsClass": "container",
         "children": Array [
           <Header />,
-          <DescriptionPanel />,
+          <InjectIntl(DescriptionPanel) />,
           <MethodPanel />,
           undefined,
           undefined,
@@ -320,7 +320,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {},
           "ref": null,
           "rendered": null,
@@ -404,7 +404,7 @@ ShallowWrapper {
       "bsClass": "container",
       "children": Array [
         <Header />,
-        <DescriptionPanel />,
+        <InjectIntl(DescriptionPanel) />,
         <MethodPanel />,
         undefined,
         undefined,
@@ -426,7 +426,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {},
         "ref": null,
         "rendered": null,
@@ -455,7 +455,7 @@ ShallowWrapper {
         "bsClass": "container",
         "children": Array [
           <Header />,
-          <DescriptionPanel />,
+          <InjectIntl(DescriptionPanel) />,
           <MethodPanel />,
           undefined,
           undefined,
@@ -477,7 +477,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {},
           "ref": null,
           "rendered": null,
@@ -561,7 +561,7 @@ ShallowWrapper {
       "bsClass": "container",
       "children": Array [
         <Header />,
-        <DescriptionPanel />,
+        <InjectIntl(DescriptionPanel) />,
         <MethodPanel />,
         <InputPanel />,
         undefined,
@@ -583,7 +583,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {},
         "ref": null,
         "rendered": null,
@@ -620,7 +620,7 @@ ShallowWrapper {
         "bsClass": "container",
         "children": Array [
           <Header />,
-          <DescriptionPanel />,
+          <InjectIntl(DescriptionPanel) />,
           <MethodPanel />,
           <InputPanel />,
           undefined,
@@ -642,7 +642,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {},
           "ref": null,
           "rendered": null,
@@ -777,7 +777,7 @@ ShallowWrapper {
       "bsClass": "container",
       "children": Array [
         <Header />,
-        <DescriptionPanel />,
+        <InjectIntl(DescriptionPanel) />,
         <MethodPanel />,
         <InputPanel />,
         <OutputPanel />,
@@ -799,7 +799,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {},
         "ref": null,
         "rendered": null,
@@ -844,7 +844,7 @@ ShallowWrapper {
         "bsClass": "container",
         "children": Array [
           <Header />,
-          <DescriptionPanel />,
+          <InjectIntl(DescriptionPanel) />,
           <MethodPanel />,
           <InputPanel />,
           <OutputPanel />,
@@ -866,7 +866,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {},
           "ref": null,
           "rendered": null,
