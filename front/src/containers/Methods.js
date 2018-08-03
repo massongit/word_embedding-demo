@@ -8,6 +8,6 @@ const mapStateToProps = state => ({
 })
 
 /**
- * 入力部のContainer
+ * 手法選択部のContainer
  */
 export default injectIntl(connect(mapStateToProps)(Methods))

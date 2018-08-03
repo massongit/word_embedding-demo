@@ -6,7 +6,7 @@ import {setMethod} from "../actions"
 import general from "../configs/general"
 
 /**
- * 入力部
+ * 手法選択部
  */
 class Method extends React.Component {
     static propTypes = {

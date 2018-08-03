@@ -43,21 +43,49 @@
     * Action
         * `action.payload.keywords`: 入力したキーワード (連想配列)
         * `action.payload.words`: 分散表現による計算結果 (分散表現による計算用APIのレスポンス)
+        * `action.payload.method`: 手法 (文字列)
     * State
         * `state.showSimilarWords.keywords`: 入力したキーワード (連想配列)
         * `state.showSimilarWords.words`: 分散表現による計算結果 (分散表現による計算用APIのレスポンス)
+        * `state.showSimilarWords.method`: 手法 (文字列)
 * loading: ローディングAction
     * Action
         * `action.payload.loading`: 分散表現による計算結果を取得中かどうか (boolean)
     * State
         * `state.loading.loading`: 分散表現による計算結果を取得中かどうか (boolean)
+* setMethod: 手法セットAction
+    * Action
+        * `action.payload.method`: 手法 (文字列)
+    * State
+        * `state.setMethod.method`: 手法 (文字列)
+* setMethods: 手法一覧セットAction
+    * Action
+        * `action.payload.methods`: 手法一覧 (配列)
+    * State
+        * `state.setMethod.methods`: 手法一覧 (配列)
 
 ## 分散表現による計算用API
-### リクエスト
+### 手法一覧の取得
+#### リクエスト
+空データ (GETメソッド)
+
+#### レスポンス
+手法一覧 (JSON形式)
+
+```json
+[
+    "word2vec",
+    "fasttext"
+]
+```
+
+### 分散表現による計算
+#### リクエスト
 日本語のpositiveな単語のリストとnegativeな単語のリスト (POSTメソッド, JSON形式)
 
 ```json
 {
+    "method": "fasttext",
     "negative": [
         "男"
     ],
@@ -67,7 +95,7 @@
     ]
 }
 ```
-### レスポンス
+#### レスポンス
 入力された単語に類似する上位10単語の情報 (JSON形式)
 
 ```json

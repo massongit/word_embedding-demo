@@ -5,8 +5,8 @@ import {Panel, Row} from "react-bootstrap"
 import {FormattedMessage} from "react-intl"
 
 /**
- * 入力部のパネル
- * @returns {element} 入力部のパネル
+ * 手法選択部のパネル
+ * @returns {element} 手法選択部のパネル
  */
 const MethodPanel = () => (
     <Row>

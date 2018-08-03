@@ -151,6 +151,8 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
             * Information.js: 計算結果表示部
             * Input.js: 入力部
             * InputPanel.js: 入力部のパネル
+            * Input.js: 手法選択部
+            * InputPanel.js: 手法選択部のパネル
             * KeyWords.js: 入力文をボタンのグループとして表示するComponent
             * OutputPanel.js: 計算結果表示部のパネル
             * PanelBody.js: PanelのBody
@@ -159,11 +161,16 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
             * Information.js: 計算結果表示部のContainer
             * Input.js: 入力部のContainer
             * KeyWords.js: 入力文をボタンのグループとして表示するComponentのContainer
+            * Input.js: 手法選択部のContainer
             * PanelBody.js: PanelのBodyのContainer
         * reducers/: [Redux](https://redux.js.org/)のReducerが格納されている
             * index.js: ルートReducer
             * loading.js: ローディングActionのReducer
+            * setMethod.js: 手法セットActionのReducer
+            * setMethods.js: 手法一覧セットActionのReducer
             * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducer
+        * configs/: 設定が格納されている
+            * general.json: 一般設定
         * test_data/: テストで使用するデータが格納されている
         * translations/: メッセージリソースが格納されている
             * en.json: 英語のメッセージリソース
