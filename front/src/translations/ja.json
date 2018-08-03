@@ -6,7 +6,7 @@
   "title.method": "手法",
   "title.input": "入力",
   "title.result": "結果",
-  "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。これを利用して、単語の足し算や引き算を行うことができます。",
+  "description.wordEmbedding": "単語を意味のベクトルで表現するための技術です。\nこれを利用して、単語の足し算や引き算を行うことができます。",
   "description.method": "以下から手法を選択してください。",
   "description.input": "日本語の単語を空白で区切って入力し、計算ボタンをクリックしてください。",
   "description.input.supplement.1": "引き算を行う場合には、単語の先頭に『-』を付けます。",
