@@ -5,7 +5,6 @@ import {FormattedMessage, intlShape} from "react-intl"
 
 /**
  * 概要パネル
- * @returns {element} 概要パネル
  */
 class DescriptionPanel extends React.Component {
     static propTypes = {
