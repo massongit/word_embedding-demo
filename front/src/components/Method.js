@@ -47,7 +47,11 @@ class Method extends React.Component {
                     (() => {
                         if (this.props.method) {
                             return (
-                                <p>
+                                <p
+                                    style={{
+                                        margin: 0
+                                    }}
+                                >
                                     {
                                         this.props.intl.formatMessage({
                                             id: "description." + this.props.method
