@@ -76,7 +76,8 @@ def do_word_embedding_test(client, data):
     do_test_http_ok(res)
 
     for k in data.keys():
-        assert res.json[k] == data[k]
+        if k != 'method':
+            assert res.json[k] == data[k]
 
     for w in res.json["similar"]:
         assert "cosine" in w
