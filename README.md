@@ -158,6 +158,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
             * PanelBody.js: PanelのBody
         * containers/: [react-redux](https://redux.js.org/basics/usage-with-react)のContainerが格納されている
             * App.js: ルート要素のContainer
+            * DescriptionPanel.js: 概要パネルのContainer
             * Information.js: 計算結果表示部のContainer
             * Input.js: 入力部のContainer
             * KeyWords.js: 入力文をボタンのグループとして表示するComponentのContainer

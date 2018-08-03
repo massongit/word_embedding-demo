@@ -1,21 +1,44 @@
 import React from "react"
 import PanelBody from "../containers/PanelBody"
 import {Panel, Row} from "react-bootstrap"
-import {FormattedMessage} from "react-intl"
+import {FormattedMessage, intlShape} from "react-intl"
 
 /**
  * 概要パネル
  * @returns {element} 概要パネル
  */
-const DescriptionPanel = () => (
-    <Row>
-        <Panel>
-            <Panel.Heading>
-                <FormattedMessage id="title.description"/>
-            </Panel.Heading>
-            <PanelBody messageId="description.wordEmbedding"/>
-        </Panel>
-    </Row>
-)
+class DescriptionPanel extends React.Component {
+    static propTypes = {
+        intl: intlShape.isRequired
+    }
+
+    render() {
+        return (
+            <Row>
+                <Panel>
+                    <Panel.Heading>
+                        <FormattedMessage id="title.description"/>
+                    </Panel.Heading>
+                    <PanelBody>
+                        {
+                            this.props.intl.formatMessage({
+                                id: "description.wordEmbedding"
+                            }).split("\n").map((e, i) => (
+                                <p
+                                    key={i}
+                                    style={{
+                                        margin: 0
+                                    }}
+                                >
+                                    {e}
+                                </p>
+                            ))
+                        }
+                    </PanelBody>
+                </Panel>
+            </Row>
+        )
+    }
+}
 
 export default DescriptionPanel

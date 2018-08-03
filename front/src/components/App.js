@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Header from "./Header"
 import InputPanel from "./InputPanel"
 import MethodPanel from "./MethodPanel"
-import DescriptionPanel from "./DescriptionPanel"
+import DescriptionPanel from "../containers/DescriptionPanel"
 import OutputPanel from "./OutputPanel"
 import {Grid} from "react-bootstrap"
 
