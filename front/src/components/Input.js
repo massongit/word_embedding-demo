@@ -16,6 +16,8 @@ class Input extends React.Component {
         dispatch: PropTypes.func.isRequired,
         keywords: PropTypes.shape(propTypesPN).isRequired,
         loading: PropTypes.bool.isRequired,
+        prevMethod: PropTypes.string,
+        method: PropTypes.string.isRequired,
         intl: intlShape.isRequired
     }
 
@@ -76,7 +78,7 @@ class Input extends React.Component {
         const keywords = this.makeKeyWords()
 
         // 以前の入力文とは異なる文章が入力されたとき
-        if ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords)) {
+        if (this.props.method !== this.props.prevMethod || ((0 < keywords.positive.length || 0 < keywords.negative.length) && JSON.stringify(keywords) !== JSON.stringify(this.props.keywords))) {
             // ローディングアイコンを表示する
             this.props.dispatch(loading({
                 loading: true
@@ -86,7 +88,11 @@ class Input extends React.Component {
             try {
                 this.props.dispatch(showSimilarWords({
                     keywords,
-                    words: await this.callWordEmbedding(keywords)
+                    words: await this.callWordEmbedding({
+                        ...keywords,
+                        method: this.props.method
+                    }),
+                    method: this.props.method
                 }))
             } catch (er) {
                 alert(this.props.intl.formatMessage(

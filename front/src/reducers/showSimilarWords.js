@@ -27,7 +27,8 @@ export default handleActions(
                 if (checkSimilar(action.payload.words.similar) && action.payload.keywords && action.payload.words && !action.payload.words.similar.includes(undefined)) {
                     return {
                         keywords: action.payload.keywords,
-                        words: action.payload.words
+                        words: action.payload.words,
+                        method: action.payload.method
                     }
                 }
             }

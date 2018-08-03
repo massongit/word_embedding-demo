@@ -1,4 +1,6 @@
 import loading from "./loading"
+import setMethod from "./setMethod"
+import setMethods from "./setMethods"
 import showSimilarWords from "./showSimilarWords"
 import {combineReducers} from "redux"
 
@@ -7,5 +9,7 @@ import {combineReducers} from "redux"
  */
 export default combineReducers({
     showSimilarWords,
-    loading
+    loading,
+    setMethods,
+    setMethod
 })

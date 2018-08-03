@@ -72,38 +72,44 @@ class WordEmbeddingView(flask_classy.FlaskView):
     trailing_slash = False
 
     def __init__(self):
-        if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
-            # 分散表現
-            self.word_embedding = pyfasttext.FastText(conf.get('general', 'word embedding', 'model path'))
-        else:  # Word2Vecのモデルを使用するとき
-            # 分散表現
-            self.word_embedding = gensim.models.KeyedVectors.load_word2vec_format(
-                conf.get('general', 'word embedding', 'model path'),
-                binary=bool(conf.get('general', 'word embedding', 'is binary')))
+        self.word_embeddings = collections.OrderedDict()
+
+        # Word2Vecのモデルを使用するとき
+        if conf.get('general', 'word2vec', 'model path') and conf.get('general', 'word2vec', 'mecab dir path'):
+            # Word2Vecのモデル
+            self.word_embeddings['word2vec'] = gensim.models.KeyedVectors.load_word2vec_format(
+                conf.get('general', 'word2vec', 'model path'),
+                binary=bool(conf.get('general', 'word2vec', 'is binary')))
 
             # MeCab
             self.mecab = natto.MeCab({
                 'output_format_type': 'wakati',
-                'dicdir': conf.get('general', 'mecab', 'dir path')
+                'dicdir': conf.get('general', 'word2vec', 'mecab dir path')
             })
+
+        # FastTextのモデルを使用するとき
+        if conf.get('general', 'fasttext', 'model path'):
+            # FastTextのモデル
+            self.word_embeddings['fasttext'] = pyfasttext.FastText(conf.get('general', 'fasttext', 'model path'))
 
         self.pn = {
             'positive': 1,
             'negative': -1
         }
 
-    def _wakati_keywords(self, keywords):
+    def _wakati_keywords(self, method, keywords):
         """
         キーワードの単語分割を行う
+        :param method: 手法
         :param keywords: キーワードのりスト
         :return: 単語分割されたキーワードのりスト
         """
         words = list()
 
         for keyword in keywords:
-            if conf.get('general', 'word embedding', 'method'):  # FastTextのモデルを使用するとき
+            if method == 'fasttext':  # FastTextのモデルを使用するとき
                 words.append(keyword)
-            else:  # Word2Vecのモデルを使用するとき
+            elif method == 'word2vec':  # Word2Vecのモデルを使用するとき
                 words += self.mecab.parse(keyword).split()
 
         return words
@@ -123,7 +129,7 @@ class WordEmbeddingView(flask_classy.FlaskView):
 
         for k in self.pn.keys():
             if k in request:
-                words = self._wakati_keywords(request[k])
+                words = self._wakati_keywords(request['method'], request[k])
             else:
                 words = list()
 
@@ -147,19 +153,16 @@ class WordEmbeddingView(flask_classy.FlaskView):
                     for k, pm in self.pn.items()}
 
         # 類似単語を導出
-        try:
-            responce['similar'] = [{
-                'word': w,
-                'cosine': c
-            } for w, c in self.word_embedding.most_similar(**responce)]
-        except ValueError:
-            responce['similar'] = list()
+        responce['similar'] = [{
+            'word': w,
+            'cosine': c
+        } for w, c in self.word_embeddings[request['method']].most_similar(**responce)]
 
         return responce
 
     def post(self):
         try:
-            app.logger.debug('/wordembedding/ called!')
+            app.logger.debug('POST /wordembedding/ called!')
 
             # リクエスト
             request = flask.request.get_json()
@@ -180,6 +183,19 @@ class WordEmbeddingView(flask_classy.FlaskView):
         except Exception as e:
             app.logger.exception(e)
             flask.abort(flask_api.status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def get(self):
+        app.logger.debug('GET /wordembedding/ called!')
+        response = flask.jsonify(list(self.word_embeddings.keys()))
+        response.status_code = flask_api.status.HTTP_200_OK
+        response.headers['Access-Control-Allow-Origin'] = '*'
+
+        app.logger.debug('<Response>')
+        app.logger.debug('[Status]')
+        app.logger.debug(response.status)
+        output_http_data(response.headers, response.json)
+
+        return response
 
 
 if __name__ == '__main__':

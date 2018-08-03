@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Header from "./Header"
 import InputPanel from "./InputPanel"
+import MethodPanel from "./MethodPanel"
 import DescriptionPanel from "./DescriptionPanel"
 import OutputPanel from "./OutputPanel"
 import {Grid} from "react-bootstrap"
@@ -21,14 +22,24 @@ export const propTypesSimilar = {
  * ルート要素
  */
 class App extends React.Component {
-    static propTypes = propTypesSimilar
+    static propTypes = {
+        ...propTypesSimilar,
+        method: PropTypes.string
+    }
 
     render() {
         return (
             <Grid>
                 <Header/>
                 <DescriptionPanel/>
-                <InputPanel/>
+                <MethodPanel/>
+                {
+                    (() => {
+                        if (this.props.method) {
+                            return (<InputPanel/>)
+                        }
+                    })()
+                }
                 {
                     (() => {
                         // 分散表現による計算が行われていない場合には表示しない
