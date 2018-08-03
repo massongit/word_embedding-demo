@@ -1,0 +1,6 @@
+{
+  "word_embeddings.methods": {
+    "word2vec": "Word2Vec",
+    "fasttext": "FastText"
+  }
+}
