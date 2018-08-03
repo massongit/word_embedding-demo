@@ -67,6 +67,16 @@ class Input extends React.Component {
     }
 
     /**
+     * ローディングActionをdispatchする
+     * @param isLoading ローディング中かどうか
+     */
+    loading(isLoading) {
+        this.props.dispatch(loading({
+            loading: isLoading
+        }))
+    }
+
+    /**
      * onSubmitイベント
      * @param ev イベント
      */
@@ -80,9 +90,7 @@ class Input extends React.Component {
         // 以前の入力文とは異なる文章が入力されたとき
         if ((0 < keywords.positive.length || 0 < keywords.negative.length) && (this.props.method !== this.props.prevMethod || JSON.stringify(keywords) !== JSON.stringify(this.props.keywords))) {
             // ローディングアイコンを表示する
-            this.props.dispatch(loading({
-                loading: true
-            }))
+            this.loading(true)
 
             // 分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatch
             try {
@@ -106,9 +114,7 @@ class Input extends React.Component {
             }
 
             // ローディングアイコンを消す
-            this.props.dispatch(loading({
-                loading: false
-            }))
+            this.loading(false)
         }
     }
 
