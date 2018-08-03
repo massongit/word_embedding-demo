@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import {Radio, FormGroup} from "react-bootstrap"
 import {intlShape} from "react-intl"
 import {setMethod} from "../actions"
-import general from "../settings/general"
+import general from "../configs/general"
 
 /**
  * 入力部
