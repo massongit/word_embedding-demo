@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Radio} from "react-bootstrap"
+import {Radio, FormGroup} from "react-bootstrap"
 import {intlShape} from "react-intl"
 import {setMethod} from "../actions"
 import general from "../settings/general"
@@ -19,55 +19,47 @@ class Method extends React.Component {
     render() {
         return (
             <div>
-                {
-                    this.props.methods.map((m, i) => {
-                        if (m in general["word_embeddings.methods"]) {
-                            return (
-                                <Radio
-                                    key={i}
-                                    name="method"
-                                    onChange={
-                                        () => {
-                                            this.props.dispatch(setMethod({
-                                                method: m
-                                            }))
+                <FormGroup>
+                    {
+                        this.props.methods.map((m, i) => {
+                            if (m in general["word_embeddings.methods"]) {
+                                return (
+                                    <Radio
+                                        key={i}
+                                        name="method"
+                                        onChange={
+                                            () => {
+                                                this.props.dispatch(setMethod({
+                                                    method: m
+                                                }))
+                                            }
                                         }
-                                    }
-                                    inline
-                                >
-                                    {general["word_embeddings.methods"][m]}
-                                </Radio>
-                            )
-                        } else {
-                            return undefined
-                        }
-                    })
-                }
+                                        inline
+                                    >
+                                        {general["word_embeddings.methods"][m]}
+                                    </Radio>
+                                )
+                            } else {
+                                return undefined
+                            }
+                        })
+                    }
+                </FormGroup>
                 {
                     (() => {
                         if (this.props.method) {
-                            return (
+                            return this.props.intl.formatMessage({
+                                id: "description." + this.props.method
+                            }).split("\n").map((e, i) => (
                                 <p
+                                    key={i}
                                     style={{
                                         margin: 0
                                     }}
                                 >
-                                    {
-                                        this.props.intl.formatMessage({
-                                            id: "description." + this.props.method
-                                        }).split("\n").map((e, i) => (
-                                            <p
-                                                key={i}
-                                                style={{
-                                                    margin: 0
-                                                }}
-                                            >
-                                                {e}
-                                            </p>
-                                        ))
-                                    }
+                                    {e}
                                 </p>
-                            )
+                            ))
                         }
                     })()
                 }
