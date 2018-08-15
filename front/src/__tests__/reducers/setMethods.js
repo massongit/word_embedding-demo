@@ -50,98 +50,98 @@ const dispatchSetMethodsAndSetMethodEqual = (store, p, s) => {
     ], s)
 }
 
-let store
+let setMethodsStore
 
 describe("reducers/setMethods", () => {
     beforeEach(() => {
-        store = createStore(setMethodsReducer)
+        setMethodsStore = createStore(setMethodsReducer)
     })
 
     it("初期状態を正しく保持している", () => {
-        storeEqual(store, initialSetMethodsState)
+        storeEqual(setMethodsStore, initialSetMethodsState)
     })
 
     it("初期状態において、setMethodsのActionからsetMethodsのStateを生成する", () => {
-        dispatchSetMethodsEqual(store, setMethodsState, setMethodsState)
+        dispatchSetMethodsEqual(setMethodsStore, setMethodsState, setMethodsState)
     })
 
     it("初期状態において、空のsetMethodsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsEqual(store, emptyAction, initialSetMethodsState)
+        dispatchSetMethodsEqual(setMethodsStore, emptyAction, initialSetMethodsState)
     })
 
     it("初期状態において、showSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsState, initialSetMethodsState)
+        dispatchShowSimilarWordsEqual(setMethodsStore, showSimilarWordsState, initialSetMethodsState)
     })
 
     it("初期状態において、wordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
+        dispatchShowSimilarWordsEqual(setMethodsStore, {
             words
         }, initialSetMethodsState)
     })
 
     it("初期状態において、sentenceのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
+        dispatchShowSimilarWordsEqual(setMethodsStore, {
             keywords
         }, initialSetMethodsState)
     })
 
     it("初期状態において、undefinedな要素を含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord, initialSetMethodsState)
+        dispatchShowSimilarWordsEqual(setMethodsStore, showSimilarWordsStateIncludeUndefinedWord, initialSetMethodsState)
     })
 
     it("初期状態において、loadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchLoadingEqual(store, loadingState, initialSetMethodsState)
+        dispatchLoadingEqual(setMethodsStore, loadingState, initialSetMethodsState)
     })
 
     it("初期状態において、空のloadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchLoadingEqual(store, emptyAction, initialSetMethodsState)
+        dispatchLoadingEqual(setMethodsStore, emptyAction, initialSetMethodsState)
     })
 
     it("初期状態において、setMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, setMethodParameter, initialSetMethodsState)
+        dispatchSetMethodEqual(setMethodsStore, setMethodParameter, initialSetMethodsState)
     })
 
     it("初期状態において、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, emptyAction, initialSetMethodsState)
+        dispatchSetMethodEqual(setMethodsStore, emptyAction, initialSetMethodsState)
     })
 
     it("初期状態以外のStateにおいて、showSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndShowSimilarWordsEqual(store, showSimilarWordsState2, setMethodsState)
+        dispatchSetMethodsAndShowSimilarWordsEqual(setMethodsStore, showSimilarWordsState2, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、sentenceのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndShowSimilarWordsEqual(store, {
+        dispatchSetMethodsAndShowSimilarWordsEqual(setMethodsStore, {
             keywords: keywords2
         }, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、wordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndShowSimilarWordsEqual(store, {
+        dispatchSetMethodsAndShowSimilarWordsEqual(setMethodsStore, {
             words: words2
         }, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、undefinedな要素を含むwordsを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord2, setMethodsState)
+        dispatchSetMethodsAndShowSimilarWordsEqual(setMethodsStore, showSimilarWordsStateIncludeUndefinedWord2, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、sentenceとwords内の単語が一致しないshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndShowSimilarWordsEqual(store, showSimilarWordsParameterInvalidKeyWords, setMethodsState)
+        dispatchSetMethodsAndShowSimilarWordsEqual(setMethodsStore, showSimilarWordsParameterInvalidKeyWords, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、loadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndLoadingEqual(store, initialLoadingState, setMethodsState)
+        dispatchSetMethodsAndLoadingEqual(setMethodsStore, initialLoadingState, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、空のloadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndLoadingEqual(store, emptyAction, setMethodsState)
+        dispatchSetMethodsAndLoadingEqual(setMethodsStore, emptyAction, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、setMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndSetMethodEqual(store, setMethodParameter2, setMethodsState)
+        dispatchSetMethodsAndSetMethodEqual(setMethodsStore, setMethodParameter2, setMethodsState)
     })
 
     it("初期状態以外のStateにおいて、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodsAndSetMethodEqual(store, emptyAction, setMethodsState)
+        dispatchSetMethodsAndSetMethodEqual(setMethodsStore, emptyAction, setMethodsState)
     })
 })
