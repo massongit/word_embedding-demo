@@ -1,6 +1,6 @@
 import React from "react"
 import PanelBody from "../containers/PanelBody"
-import Methods from "../containers/Methods"
+import Method from "../containers/Method"
 import {Panel, Row} from "react-bootstrap"
 import {FormattedMessage} from "react-intl"
 
@@ -17,7 +17,7 @@ const MethodPanel = () => (
             <PanelBody
                 messageId="description.method"
             >
-                <Methods/>
+                <Method/>
             </PanelBody>
         </Panel>
     </Row>

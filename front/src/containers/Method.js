@@ -1,4 +1,4 @@
-import Methods from "../components/Method"
+import Method from "../components/Method"
 import {connect} from "react-redux"
 import {injectIntl} from "react-intl"
 
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 /**
  * 手法選択部のContainer
  */
-export default injectIntl(connect(mapStateToProps)(Methods))
+export default injectIntl(connect(mapStateToProps)(Method))
