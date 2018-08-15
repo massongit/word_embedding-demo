@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import general from "../configs/general"
 import {FormGroup, Radio} from "react-bootstrap"
 import {intlShape} from "react-intl"
 import {setMethod} from "../actions"
-import general from "../configs/general"
 
 /**
  * 手法選択部
@@ -12,7 +12,7 @@ class Method extends React.Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
         methods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        method: PropTypes.string.isRequired,
+        method: PropTypes.string,
         intl: intlShape.isRequired
     }
 

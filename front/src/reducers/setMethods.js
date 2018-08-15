@@ -8,7 +8,7 @@ export default handleActions(
     {
         // 手法一覧セットActionのとき
         [types.SET_METHODS]: (state, action) => {
-            if (0 < action.payload.methods.length) {
+            if (action.payload.methods && 0 < action.payload.methods.length) {
                 return {
                     methods: action.payload.methods
                 }

@@ -136,10 +136,13 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
                 * Information.js: 計算結果表示部のContainerのテスト
                 * Input.js: 入力部のContainerのテスト
                 * KeyWords.js: 入力文をボタンのグループとして表示するComponentのContainerのテスト
+                * Method.js: 手法選択部のContainerのテスト
                 * PanelBody.js: PanelのBodyのContainerのテスト
             * reducers/: [Redux](https://redux.js.org/)のReducerのテストが格納されている
                 * index.js: ルートReducerのテスト
-                * loading.js: ローディングActionのテスト
+                * loading.js: ローディングActionのReducerのテスト
+                * setMethod.js: 手法セットActionのReducerのテスト
+                * setMethods.js: 手法一覧セットActionのReducerのテスト
                 * showSimilarWords.js: 分散表現による計算結果の表示ActionのReducerのテスト
         * actions/: [Redux](https://redux.js.org/)のActionCreatorが格納されている
             * index.js: ActionCreator

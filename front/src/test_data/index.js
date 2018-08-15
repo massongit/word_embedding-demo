@@ -2,6 +2,8 @@ import words from "./words"
 import words2 from "./words2"
 import keywords from "./keywords"
 import keywords2 from "./keywords2"
+import setMethodParameter from "./setMethodParameter"
+import setMethodParameter2 from "./setMethodParameter2"
 
 export const word = words.similar[0].word
 
@@ -48,4 +50,9 @@ export const showSimilarWordsStateIncludeUndefinedWord2 = {
         negative: words2.negative,
         similar: words2.similar.concat(undefined)
     }
+}
+
+export const setMethodState2 = {
+    ...setMethodParameter2,
+    prevMethod: setMethodParameter.method
 }

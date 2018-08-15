@@ -1,6 +1,8 @@
 import * as types from "../../actions/types"
 import loadingState from "../../test_data/loadingState"
-import {loading} from "../../actions"
+import setMethodsState from "../../test_data/setMethodsState"
+import setMethodParameter from "../../test_data/setMethodParameter"
+import {loading, setMethod, setMethods} from "../../actions"
 import {showSimilarWordsState} from "../../test_data"
 import {makeShowSimilarWordsAction} from "../reducers"
 
@@ -22,11 +24,31 @@ const loadingAction = {
     payload: loadingState
 }
 
+/**
+ * 手法一覧セットAction
+ * @type {{type: string, payload}}
+ */
+const setMethodsAction = {
+    type: types.SET_METHODS,
+    payload: setMethodsState
+}
+
+/**
+ * 手法セットAction
+ * @type {{type: string, payload}}
+ */
+const setMethodAction = {
+    type: types.SET_METHOD,
+    payload: setMethodParameter
+}
+
 describe("actions/index", () => {
     it("valueからActionを生成する", () => {
         for (const v of [
             [makeShowSimilarWordsAction(showSimilarWordsState), showSimilarWordsAction],
-            [loading(loadingState), loadingAction]
+            [loading(loadingState), loadingAction],
+            [setMethods(setMethodsState), setMethodsAction],
+            [setMethod(setMethodParameter), setMethodAction]
         ]) {
             expect(v[0]).toEqual(v[1])
         }
@@ -35,7 +57,9 @@ describe("actions/index", () => {
     it("valueから異常値を除外してActionを生成する", () => {
         for (const v of [
             [makeShowSimilarWordsAction, showSimilarWordsState, showSimilarWordsAction],
-            [loading, loadingState, loadingAction]
+            [loading, loadingState, loadingAction],
+            [setMethods, setMethodsState, setMethodsAction],
+            [setMethod, setMethodParameter, setMethodAction]
         ]) {
             expect(v[0]({
                 ...v[1],

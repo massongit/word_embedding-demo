@@ -6,7 +6,7 @@ import initialSetMethodState from "../../test_data/initialSetMethodState"
 import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
-import {loading, showSimilarWords} from "../../actions"
+import {loading, setMethod, setMethods, showSimilarWords} from "../../actions"
 import {showSimilarWordsState} from "../../test_data"
 
 export const dispatchActions = (store, actions) => {
@@ -49,6 +49,21 @@ export const dispatchShowSimilarWordsEqual = (store, p, s) => {
 
 export const dispatchLoadingEqual = (store, p, s) => {
     dispatchEqual(store, loading(p), s)
+}
+
+export const dispatchSetMethodEqual = (store, p, s) => {
+    dispatchEqual(store, setMethod(p), s)
+}
+
+export const dispatchSetMethodsEqual = (store, p, s) => {
+    dispatchEqual(store, setMethods(p), s)
+}
+
+export const dispatchDoubleLoadingEqual = (store, p, s) => {
+    dispatchEqual(store, [
+        loading(loadingState),
+        loading(p)
+    ], s)
 }
 
 let store

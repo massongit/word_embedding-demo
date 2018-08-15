@@ -4,13 +4,19 @@ import words2 from "../../test_data/words2"
 import keywords from "../../test_data/keywords"
 import keywords2 from "../../test_data/keywords2"
 import loadingState from "../../test_data/loadingState"
-import emptyLoadingAction from "../../test_data/emptyLoadingAction"
+import emptyAction from "../../test_data/emptyAction"
+import setMethodsState from "../../test_data/setMethodsState"
+import setMethodParameter from "../../test_data/setMethodParameter"
+import setMethodParameter2 from "../../test_data/setMethodParameter2"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import {createStore} from "redux"
-import {loading} from "../../actions"
+import {loading, setMethod} from "../../actions"
 import {
+    dispatchDoubleLoadingEqual,
     dispatchEqual,
     dispatchLoadingEqual,
+    dispatchSetMethodEqual,
+    dispatchSetMethodsEqual,
     dispatchShowSimilarWordsEqual,
     makeShowSimilarWordsAction,
     storeEqual
@@ -23,17 +29,17 @@ import {
     showSimilarWordsStateIncludeUndefinedWord2
 } from "../../test_data"
 
-const dispatchDoubleLoadingEqual = (store, p, s) => {
-    dispatchEqual(store, [
-        loading(loadingState),
-        loading(p)
-    ], s)
-}
-
 const dispatchLoadingAndShowSimilarWordsEqual = (store, p, s) => {
     dispatchEqual(store, [
         loading(loadingState),
         makeShowSimilarWordsAction(p)
+    ], s)
+}
+
+const dispatchLoadingAndSetMethodEqual = (store, p, s) => {
+    dispatchEqual(store, [
+        loading(loadingState),
+        setMethod(p)
     ], s)
 }
 
@@ -53,7 +59,7 @@ describe("reducers/loading", () => {
     })
 
     it("初期状態において、空のloadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchLoadingEqual(store, emptyLoadingAction, initialLoadingState)
+        dispatchLoadingEqual(store, emptyAction, initialLoadingState)
     })
 
     it("初期状態において、showSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
@@ -76,12 +82,28 @@ describe("reducers/loading", () => {
         dispatchShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord, initialLoadingState)
     })
 
+    it("初期状態において、setMethodのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodEqual(store, setMethodParameter, initialLoadingState)
+    })
+
+    it("初期状態において、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodEqual(store, emptyAction, initialLoadingState)
+    })
+
+    it("初期状態において、setMethodsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodsEqual(store, setMethodsState, initialLoadingState)
+    })
+
+    it("初期状態において、空のsetMethodsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodsEqual(store, emptyAction, initialLoadingState)
+    })
+
     it("初期状態以外のStateにおいて、loadingのActionからloadingのStateを生成する", () => {
         dispatchDoubleLoadingEqual(store, initialLoadingState, initialLoadingState)
     })
 
     it("初期状態以外のStateにおいて、空のloadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchDoubleLoadingEqual(store, emptyLoadingAction, loadingState)
+        dispatchDoubleLoadingEqual(store, emptyAction, loadingState)
     })
 
     it("初期状態以外のStateにおいて、showSimilarWordsのActionからshowSimilarWordsのStateを生成する", () => {
@@ -106,5 +128,13 @@ describe("reducers/loading", () => {
 
     it("初期状態以外のStateにおいて、sentenceとwords内の単語が一致しないshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
         dispatchLoadingAndShowSimilarWordsEqual(store, showSimilarWordsParameterInvalidKeyWords, loadingState)
+    })
+
+    it("初期状態以外のStateにおいて、setMethodのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchLoadingAndSetMethodEqual(store, setMethodParameter2, loadingState)
+    })
+
+    it("初期状態以外のStateにおいて、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchLoadingAndSetMethodEqual(store, emptyAction, loadingState)
     })
 })

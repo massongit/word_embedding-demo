@@ -3,7 +3,7 @@ import App from "../../containers/App"
 import OutputPanel from "../../components/OutputPanel"
 import InputPanel from "../../components/InputPanel"
 import rootReducer from "../../reducers"
-import setMethodState from "../../test_data/setMethodState"
+import setMethodParameter from "../../test_data/setMethodParameter"
 import setMethodsState from "../../test_data/setMethodsState"
 import {shallow} from "enzyme"
 import {createStore} from "redux"
@@ -17,7 +17,7 @@ export const functions2 = [
         dispatchActions(store, setMethods(setMethodsState))
     },
     store => {
-        dispatchActions(store, setMethod(setMethodState))
+        dispatchActions(store, setMethod(setMethodParameter))
     },
     functions
 ]
