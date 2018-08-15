@@ -10,16 +10,21 @@ import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWord
 import {FormGroup, Radio} from "react-bootstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
 
+let store
+
 loadTranslation("./src/translations/ja.json")
 
 describe("containers/Method", () => {
-    it("Componentが正しく配置されている", () => {
-        const store = configureMockStore([thunk])({
+    beforeEach(() => {
+        store = configureMockStore([thunk])({
             setMethod: initialSetMethodState,
             setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
+    })
+
+    it("Componentが正しく配置されている", () => {
         const methodComponent = shallowWithIntl(
             <Method
                 store={store}
@@ -29,12 +34,6 @@ describe("containers/Method", () => {
     })
 
     it("FormGroupになっている", () => {
-        const store = configureMockStore([thunk])({
-            setMethod: initialSetMethodState,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
         const methodComponent = mountWithIntl(
             <Method
                 store={store}
@@ -44,12 +43,6 @@ describe("containers/Method", () => {
     })
 
     it("手法一覧セットActionのStateに含まれる全ての手法がRadioとして配置されている", () => {
-        const store = configureMockStore([thunk])({
-            setMethod: initialSetMethodState,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
         const methodComponent = mountWithIntl(
             <Method
                 store={store}
@@ -65,12 +58,6 @@ describe("containers/Method", () => {
     })
 
     it("手法を選択したとき、正常に手法セットActionがdispatchされる", () => {
-        const store = configureMockStore([thunk])({
-            setMethod: initialSetMethodState,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
         const methodComponent = mountWithIntl(
             <Method
                 store={store}

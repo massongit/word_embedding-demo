@@ -19,12 +19,22 @@ export const eventMock = {
     preventDefault: jest.fn()
 }
 
-const rootStateAfterShowSimilarWords = {
-    setMethod: setMethodParameter,
-    setMethods: setMethodsState,
-    loading: initialLoadingState,
-    showSimilarWords: showSimilarWordsState
-}
+const createMockStore = (s) => (
+    configureMockStore([thunk])({
+        setMethod: setMethodParameter,
+        setMethods: setMethodsState,
+        loading: initialLoadingState,
+        showSimilarWords: s
+    })
+)
+
+const createRootState = () => (
+    createMockStore(initialShowSimilarWordsState)
+)
+
+const createRootStateAfterShowSimilarWords = () => (
+    createMockStore(showSimilarWordsState)
+)
 
 const checkContainShowSimilarWords = (store, inputComponent, w) => {
     let isExpect = false
@@ -48,12 +58,7 @@ describe("containers/Input", () => {
     })
 
     it("Componentが正しく配置されている", () => {
-        const store = configureMockStore([thunk])({
-            setMethod: setMethodParameter,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
+        const store = createRootState()
         const inputComponent = shallowWithIntl(
             <Input
                 store={store}
@@ -63,12 +68,7 @@ describe("containers/Input", () => {
     })
 
     it("Formになっている", () => {
-        const store = configureMockStore([thunk])({
-            setMethod: setMethodParameter,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
+        const store = createRootState()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
@@ -78,12 +78,7 @@ describe("containers/Input", () => {
     })
 
     it("onSubmitイベントが呼び出されたとき、サーバーへのSubmitが行われない", async () => {
-        const store = configureMockStore([thunk])({
-            setMethod: setMethodParameter,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
+        const store = createRootState()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
@@ -94,12 +89,7 @@ describe("containers/Input", () => {
     })
 
     it("入力文が空の状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが行われない", async () => {
-        const store = configureMockStore([thunk])({
-            setMethod: setMethodParameter,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
+        const store = createRootState()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
@@ -114,12 +104,7 @@ describe("containers/Input", () => {
     })
 
     it("入力文が入力された状態で、onSubmitイベントが呼び出されたとき、fetchとshowSimilarWordsのdispatchが正常に行われる", async () => {
-        const store = configureMockStore([thunk])({
-            setMethod: setMethodParameter,
-            setMethods: setMethodsState,
-            loading: initialLoadingState,
-            showSimilarWords: initialShowSimilarWordsState
-        })
+        const store = createRootState()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
@@ -133,7 +118,7 @@ describe("containers/Input", () => {
     })
 
     it("前回と同じ入力内容でonSubmitイベントを呼び出したとき、fetchやshowSimilarWordsのdispatchが行われない", async () => {
-        const store = configureMockStore([thunk])(rootStateAfterShowSimilarWords)
+        const store = createRootStateAfterShowSimilarWords()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
@@ -148,7 +133,7 @@ describe("containers/Input", () => {
     })
 
     it("前回とは違う入力内容でonSubmitイベントを呼び出したとき、fetchやshowSimilarWordsのdispatchが正常に行われる", async () => {
-        const store = configureMockStore([thunk])(rootStateAfterShowSimilarWords)
+        const store = createRootStateAfterShowSimilarWords()
         const inputComponent = mountWithIntl(
             <Input
                 store={store}
