@@ -1,6 +1,8 @@
 import deepcopy from "deepcopy"
 import rootReducer from "../../reducers"
 import loadingState from "../../test_data/loadingState"
+import setMethodsState from "../../test_data/setMethodsState"
+import setMethodParameter from "../../test_data/setMethodParameter"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialSetMethodState from "../../test_data/initialSetMethodState"
 import initialSetMethodsState from "../../test_data/initialSetMethodsState"
@@ -38,15 +40,6 @@ export const dispatchEqual = (store, p, s) => {
     storeEqual(store, s)
 }
 
-export const dispatchShowSimilarWordsEqual = (store, p, s) => {
-    dispatchEqual(store,
-        [
-            loading(loadingState),
-            makeShowSimilarWordsAction(p),
-            loading(initialLoadingState)
-        ], s)
-}
-
 export const dispatchLoadingEqual = (store, p, s) => {
     dispatchEqual(store, loading(p), s)
 }
@@ -57,6 +50,13 @@ export const dispatchSetMethodEqual = (store, p, s) => {
 
 export const dispatchSetMethodsEqual = (store, p, s) => {
     dispatchEqual(store, setMethods(p), s)
+}
+
+export const dispatchSetMethodsAndSetMethodEqual = (store, p, s) => {
+    dispatchEqual(store, [
+        setMethods(setMethodsState),
+        setMethod(p)
+    ], s)
 }
 
 let store
@@ -75,19 +75,34 @@ describe("reducers/index", () => {
         })
     })
 
-    it("初期状態からloadingへStateが遷移した際に、正しいStateを返す", () => {
-        dispatchLoadingEqual(store, loadingState, {
+    it("初期状態からsetMethodsへStateが遷移した際に、正しいStateを返す", () => {
+        dispatchSetMethodsEqual(store, setMethodsState, {
             setMethod: initialSetMethodState,
-            setMethods: initialSetMethodsState,
-            loading: loadingState,
+            setMethods: setMethodsState,
+            loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
         })
     })
 
-    it("初期状態からshowSimilarWordsへStateが遷移した際に、正しいStateを返す", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsState, {
-            setMethod: initialSetMethodState,
-            setMethods: initialSetMethodsState,
+    it("初期状態からsetMethods, setMethodとStateが遷移した際に、正しいStateを返す", () => {
+        dispatchSetMethodsAndSetMethodEqual(store, setMethodParameter, {
+            setMethod: setMethodParameter,
+            setMethods: setMethodsState,
+            loading: initialLoadingState,
+            showSimilarWords: initialShowSimilarWordsState
+        })
+    })
+
+    it("初期状態からsetMethods, setMethod, loading, showSimilarWords, loadingとStateが遷移した際に、正しいStateを返す", () => {
+        dispatchEqual(store, [
+            setMethods(setMethodsState),
+            setMethod(setMethodParameter),
+            loading(loadingState),
+            makeShowSimilarWordsAction(showSimilarWordsState),
+            loading(initialLoadingState)
+        ], {
+            setMethod: setMethodParameter,
+            setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: showSimilarWordsState
         })

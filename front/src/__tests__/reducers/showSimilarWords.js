@@ -15,7 +15,6 @@ import {
     dispatchLoadingEqual,
     dispatchSetMethodEqual,
     dispatchSetMethodsEqual,
-    dispatchShowSimilarWordsEqual,
     makeShowSimilarWordsAction,
     storeEqual
 } from "./index"
@@ -55,6 +54,15 @@ const dispatchShowSimilarWordsAndSetMethodEqual = (store, p, s) => {
         loading(initialLoadingState),
         setMethod(p)
     ], s)
+}
+
+const dispatchShowSimilarWordsEqual = (store, p, s) => {
+    dispatchEqual(store,
+        [
+            loading(loadingState),
+            makeShowSimilarWordsAction(p),
+            loading(initialLoadingState)
+        ], s)
 }
 
 let store

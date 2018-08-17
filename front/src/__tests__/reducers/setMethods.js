@@ -5,14 +5,20 @@ import setMethodParameter2 from "../../test_data/setMethodParameter2"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import {createStore} from "redux"
-import {loading, setMethod, setMethods} from "../../actions"
-import {dispatchEqual, dispatchSetMethodsEqual, makeShowSimilarWordsAction, storeEqual} from "./index"
+import {loading, setMethods} from "../../actions"
+import {
+    dispatchEqual,
+    dispatchSetMethodsAndSetMethodEqual,
+    dispatchSetMethodsEqual,
+    makeShowSimilarWordsAction,
+    storeEqual
+} from "./index"
 import {
     showSimilarWordsParameterInvalidKeyWords,
     showSimilarWordsState2,
     showSimilarWordsStateIncludeUndefinedWord2,
     showSimilarWordsStateOnlyKeywords2,
-    showSimilarWordsStateOnlyWords2
+    showSimilarWordsStateOnlyWords2,
 } from "../../test_data"
 
 const dispatchSetMethodsAndShowSimilarWordsEqual = (store, p, s) => {
@@ -26,13 +32,6 @@ const dispatchSetMethodsAndLoadingEqual = (store, p, s) => {
     dispatchEqual(store, [
         setMethods(setMethodsState),
         loading(p)
-    ], s)
-}
-
-const dispatchSetMethodsAndSetMethodEqual = (store, p, s) => {
-    dispatchEqual(store, [
-        setMethods(setMethodsState),
-        setMethod(p)
     ], s)
 }
 
