@@ -66,6 +66,21 @@ def test_analysis_word_embedding(client, conf):
     })
 
 
+def test_get_methods(client, conf):
+    """
+    手法一覧を正常に取得できる
+    :param client: テスト用のクライアント
+    :param conf: 設定
+    """
+    res = client.get('/wordembedding')
+    do_test_http_ok(res)
+
+    assert isinstance(res.json, list)
+
+    for m in res.json:
+        assert isinstance(m, str)
+
+
 def do_word_embedding_test(client, data):
     """
     分散表現による計算のテストを行う
