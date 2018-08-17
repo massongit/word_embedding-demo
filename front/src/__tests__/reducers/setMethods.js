@@ -1,31 +1,17 @@
 import setMethodsReducer from "../../reducers/setMethods"
 import emptyAction from "../../test_data/emptyAction"
-import loadingState from "../../test_data/loadingState"
 import setMethodsState from "../../test_data/setMethodsState"
-import setMethodParameter from "../../test_data/setMethodParameter"
 import setMethodParameter2 from "../../test_data/setMethodParameter2"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import {createStore} from "redux"
 import {loading, setMethod, setMethods} from "../../actions"
-import {
-    dispatchEqual,
-    dispatchLoadingEqual,
-    dispatchSetMethodEqual,
-    dispatchSetMethodsEqual,
-    dispatchShowSimilarWordsEqual,
-    makeShowSimilarWordsAction,
-    storeEqual
-} from "./index"
+import {dispatchEqual, dispatchSetMethodsEqual, makeShowSimilarWordsAction, storeEqual} from "./index"
 import {
     showSimilarWordsParameterInvalidKeyWords,
-    showSimilarWordsState,
     showSimilarWordsState2,
-    showSimilarWordsStateIncludeUndefinedWord,
     showSimilarWordsStateIncludeUndefinedWord2,
-    showSimilarWordsStateOnlyKeywords,
     showSimilarWordsStateOnlyKeywords2,
-    showSimilarWordsStateOnlyWords,
     showSimilarWordsStateOnlyWords2
 } from "../../test_data"
 
@@ -67,38 +53,6 @@ describe("reducers/setMethods", () => {
 
     it("初期状態において、空のsetMethodsのActionが渡されたとき、Stateを変更しない", () => {
         dispatchSetMethodsEqual(store, emptyAction, initialSetMethodsState)
-    })
-
-    it("初期状態において、showSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsState, initialSetMethodsState)
-    })
-
-    it("初期状態において、wordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyWords, initialSetMethodsState)
-    })
-
-    it("初期状態において、keywordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyKeywords, initialSetMethodsState)
-    })
-
-    it("初期状態において、undefinedな要素を含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord, initialSetMethodsState)
-    })
-
-    it("初期状態において、loadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchLoadingEqual(store, loadingState, initialSetMethodsState)
-    })
-
-    it("初期状態において、空のloadingのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchLoadingEqual(store, emptyAction, initialSetMethodsState)
-    })
-
-    it("初期状態において、setMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, setMethodParameter, initialSetMethodsState)
-    })
-
-    it("初期状態において、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, emptyAction, initialSetMethodsState)
     })
 
     it("初期状態以外のStateにおいて、showSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {

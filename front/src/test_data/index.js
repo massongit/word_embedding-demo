@@ -2,10 +2,6 @@ import words from "./words"
 import words2 from "./words2"
 import keywords from "./keywords"
 import keywords2 from "./keywords2"
-import setMethodParameter from "./setMethodParameter"
-import setMethodParameter2 from "./setMethodParameter2"
-
-export const word = words.similar[0].word
 
 const method = "fasttext"
 
@@ -34,15 +30,6 @@ export const showSimilarWordsParameterInvalidKeyWords = {
     words: words2
 }
 
-export const showSimilarWordsStateIncludeUndefinedWord = {
-    keywords,
-    words: {
-        positive: words.positive,
-        negative: words.negative,
-        similar: words.similar.concat(undefined)
-    }
-}
-
 export const showSimilarWordsStateIncludeUndefinedWord2 = {
     keywords: keywords2,
     words: {
@@ -52,23 +39,10 @@ export const showSimilarWordsStateIncludeUndefinedWord2 = {
     }
 }
 
-export const showSimilarWordsStateOnlyWords = {
-    words
-}
-
 export const showSimilarWordsStateOnlyWords2 = {
     words: words2
 }
 
-export const showSimilarWordsStateOnlyKeywords = {
-    keywords
-}
-
 export const showSimilarWordsStateOnlyKeywords2 = {
     keywords: keywords2
-}
-
-export const setMethodState2 = {
-    ...setMethodParameter2,
-    prevMethod: setMethodParameter.method
 }

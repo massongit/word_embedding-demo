@@ -3,7 +3,7 @@ import Information from "../../containers/Information"
 import rootReducer from "../../reducers"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
 import {createStore} from "redux"
-import {showSimilarWordsState, word, word3} from "../../test_data"
+import {showSimilarWordsState} from "../../test_data"
 import {dispatchActions, makeShowSimilarWordsAction} from "../reducers"
 import words from "../../test_data/words"
 
@@ -16,6 +16,8 @@ const makeStore = () => {
     dispatchActions(store, makeShowSimilarWordsAction(showSimilarWordsState))
     return store
 }
+
+const word = words.similar[0].word
 
 let informationComponent
 
@@ -46,6 +48,6 @@ describe("containers/Information/other", () => {
     })
 
     it("初期状態からshowSimilarWordsへStateが遷移した際に、子要素にkeywordsが含まれる", () => {
-        expect(informationComponent.contains(words.similar[0].word)).toBeTruthy()
+        expect(informationComponent.contains(word)).toBeTruthy()
     })
 })

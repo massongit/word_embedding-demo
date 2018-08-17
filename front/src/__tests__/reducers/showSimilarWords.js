@@ -1,6 +1,8 @@
 import showSimilarWordsReducer from "../../reducers/showSimilarWords"
 import loadingState from "../../test_data/loadingState"
 import emptyAction from "../../test_data/emptyAction"
+import words from "../../test_data/words"
+import keywords from "../../test_data/keywords"
 import setMethodsState from "../../test_data/setMethodsState"
 import setMethodParameter from "../../test_data/setMethodParameter"
 import setMethodParameter2 from "../../test_data/setMethodParameter2"
@@ -21,23 +23,21 @@ import {
     showSimilarWordsParameterInvalidKeyWords,
     showSimilarWordsState,
     showSimilarWordsState2,
-    showSimilarWordsStateIncludeUndefinedWord,
     showSimilarWordsStateIncludeUndefinedWord2,
-    showSimilarWordsStateOnlyKeywords,
     showSimilarWordsStateOnlyKeywords2,
-    showSimilarWordsStateOnlyWords,
     showSimilarWordsStateOnlyWords2
 } from "../../test_data"
 
 const dispatchDoubleShowSimilarWordsEqual = (store, p, s) => {
-    dispatchEqual(store, [
-        loading(loadingState),
-        makeShowSimilarWordsAction(showSimilarWordsState),
-        loading(initialLoadingState),
-        loading(loadingState),
-        makeShowSimilarWordsAction(p),
-        loading(initialLoadingState)
-    ], s)
+    const pp = []
+
+    for (const ss of [showSimilarWordsState, p]) {
+        pp.push(loading(loadingState))
+        pp.push(makeShowSimilarWordsAction(ss))
+        pp.push(loading(initialLoadingState))
+    }
+
+    dispatchEqual(store, pp, s)
 }
 
 const dispatchShowSimilarWordsAndLoadingEqual = (store, p, s) => {
@@ -73,15 +73,26 @@ describe("reducers/showSimilarWords", () => {
     })
 
     it("初期状態において、wordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyWords, initialShowSimilarWordsState)
+        dispatchShowSimilarWordsEqual(store, {
+            words
+        }, initialShowSimilarWordsState)
     })
 
     it("初期状態において、keywordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyKeywords, initialShowSimilarWordsState)
+        dispatchShowSimilarWordsEqual(store, {
+            keywords
+        }, initialShowSimilarWordsState)
     })
 
     it("初期状態において、undefinedな要素を含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord, initialShowSimilarWordsState)
+        dispatchShowSimilarWordsEqual(store, {
+            keywords,
+            words: {
+                positive: words.positive,
+                negative: words.negative,
+                similar: words.similar.concat(undefined)
+            }
+        }, initialShowSimilarWordsState)
     })
 
     it("初期状態において、loadingのActionが渡されたとき、Stateを変更しない", () => {
