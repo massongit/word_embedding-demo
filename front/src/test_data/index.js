@@ -52,6 +52,22 @@ export const showSimilarWordsStateIncludeUndefinedWord2 = {
     }
 }
 
+export const showSimilarWordsStateOnlyWords = {
+    words
+}
+
+export const showSimilarWordsStateOnlyWords2 = {
+    words: words2
+}
+
+export const showSimilarWordsStateOnlyKeywords = {
+    keywords
+}
+
+export const showSimilarWordsStateOnlyKeywords2 = {
+    keywords: keywords2
+}
+
 export const setMethodState2 = {
     ...setMethodParameter2,
     prevMethod: setMethodParameter.method

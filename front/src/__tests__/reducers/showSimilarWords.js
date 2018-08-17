@@ -1,8 +1,4 @@
 import showSimilarWordsReducer from "../../reducers/showSimilarWords"
-import words from "../../test_data/words"
-import words2 from "../../test_data/words2"
-import keywords from "../../test_data/keywords"
-import keywords2 from "../../test_data/keywords2"
 import loadingState from "../../test_data/loadingState"
 import emptyAction from "../../test_data/emptyAction"
 import setMethodsState from "../../test_data/setMethodsState"
@@ -26,7 +22,11 @@ import {
     showSimilarWordsState,
     showSimilarWordsState2,
     showSimilarWordsStateIncludeUndefinedWord,
-    showSimilarWordsStateIncludeUndefinedWord2
+    showSimilarWordsStateIncludeUndefinedWord2,
+    showSimilarWordsStateOnlyKeywords,
+    showSimilarWordsStateOnlyKeywords2,
+    showSimilarWordsStateOnlyWords,
+    showSimilarWordsStateOnlyWords2
 } from "../../test_data"
 
 const dispatchDoubleShowSimilarWordsEqual = (store, p, s) => {
@@ -73,15 +73,11 @@ describe("reducers/showSimilarWords", () => {
     })
 
     it("初期状態において、wordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
-            words
-        }, initialShowSimilarWordsState)
+        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyWords, initialShowSimilarWordsState)
     })
 
-    it("初期状態において、sentenceのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchShowSimilarWordsEqual(store, {
-            keywords
-        }, initialShowSimilarWordsState)
+    it("初期状態において、keywordsのみを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchShowSimilarWordsEqual(store, showSimilarWordsStateOnlyKeywords, initialShowSimilarWordsState)
     })
 
     it("初期状態において、undefinedな要素を含むwordsを持ったshowSimilarWordsActionが渡されたとき、Stateを変更しない", () => {
@@ -120,16 +116,12 @@ describe("reducers/showSimilarWords", () => {
         dispatchSetMethodsEqual(store, emptyAction, initialShowSimilarWordsState)
     })
 
-    it("初期状態以外のStateにおいて、sentenceのみを持ったshowSimilarWordsのActionからshowSimilarWordsのStateを生成する", () => {
-        dispatchDoubleShowSimilarWordsEqual(store, {
-            keywords: keywords2
-        }, showSimilarWordsState)
+    it("初期状態以外のStateにおいて、keywordsのみを持ったshowSimilarWordsのActionからshowSimilarWordsのStateを生成する", () => {
+        dispatchDoubleShowSimilarWordsEqual(store, showSimilarWordsStateOnlyKeywords2, showSimilarWordsState)
     })
 
     it("初期状態以外のStateにおいて、wordsのみを持ったshowSimilarWordsのActionからshowSimilarWordsのStateを生成する", () => {
-        dispatchDoubleShowSimilarWordsEqual(store, {
-            words: words2
-        }, showSimilarWordsState)
+        dispatchDoubleShowSimilarWordsEqual(store, showSimilarWordsStateOnlyWords2, showSimilarWordsState)
     })
 
     it("初期状態以外のStateにおいて、undefinedな要素を含むwordsを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {

@@ -59,13 +59,6 @@ export const dispatchSetMethodsEqual = (store, p, s) => {
     dispatchEqual(store, setMethods(p), s)
 }
 
-export const dispatchDoubleLoadingEqual = (store, p, s) => {
-    dispatchEqual(store, [
-        loading(loadingState),
-        loading(p)
-    ], s)
-}
-
 let store
 
 describe("reducers/index", () => {
