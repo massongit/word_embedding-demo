@@ -38,9 +38,9 @@ class Input extends React.Component {
         }
 
         for (const word of this.input.value.replace("　", " ").trim().split(" ")) {
-            if (word.startsWith("-")) {
+            if (/^[-ー]/.test(word)) {
                 keywords.negative.push(word.slice(1))
-            } else if (word.startsWith("+")) {
+            } else if (/^[+＋]/.test(word)) {
                 keywords.positive.push(word.slice(1))
             } else if (word) {
                 keywords.positive.push(word)
