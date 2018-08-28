@@ -1,3 +1,4 @@
 {
-  "method": "fasttext"
+  "method": "fasttext",
+  "prevMethod": "fasttext"
 }

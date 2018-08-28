@@ -2,8 +2,9 @@ import words from "./words"
 import words2 from "./words2"
 import keywords from "./keywords"
 import keywords2 from "./keywords2"
+import setMethodParameter from "./setMethodParameter"
 
-const method = "fasttext"
+const method = setMethodParameter.method
 
 /**
  * 分散表現による計算結果の表示ActionのState
@@ -45,4 +46,8 @@ export const showSimilarWordsStateOnlyWords2 = {
 
 export const showSimilarWordsStateOnlyKeywords2 = {
     keywords: keywords2
+}
+
+export const setMethodParameter3 = {
+    method: setMethodParameter.method
 }

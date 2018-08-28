@@ -5,14 +5,13 @@ import fetch from "node-fetch"
 import configureMockStore from "redux-mock-store"
 import words from "../../test_data/words"
 import words2 from "../../test_data/words2"
-import setMethodParameter from "../../test_data/setMethodParameter"
 import setMethodsState from "../../test_data/setMethodsState"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import * as types from "../../actions/types"
 import {Form, FormControl} from "react-bootstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
-import {showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
+import {setMethodParameter3, showSimilarWordsState, showSimilarWordsState2} from "../../test_data"
 import {makeShowSimilarWordsAction} from "../reducers"
 
 export const eventMock = {
@@ -21,7 +20,7 @@ export const eventMock = {
 
 const createMockStore = (s) => (
     configureMockStore([thunk])({
-        setMethod: setMethodParameter,
+        setMethod: setMethodParameter3,
         setMethods: setMethodsState,
         loading: initialLoadingState,
         showSimilarWords: s

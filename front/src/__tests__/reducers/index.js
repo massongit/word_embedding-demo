@@ -9,7 +9,7 @@ import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
 import {loading, setMethod, setMethods, showSimilarWords} from "../../actions"
-import {showSimilarWordsState} from "../../test_data"
+import {setMethodParameter3, showSimilarWordsState} from "../../test_data"
 
 export const dispatchActions = (store, actions) => {
     if (!(actions instanceof Array)) {
@@ -85,8 +85,8 @@ describe("reducers/index", () => {
     })
 
     it("初期状態からsetMethods, setMethodとStateが遷移した際に、正しいStateを返す", () => {
-        dispatchSetMethodsAndSetMethodEqual(store, setMethodParameter, {
-            setMethod: setMethodParameter,
+        dispatchSetMethodsAndSetMethodEqual(store, setMethodParameter3, {
+            setMethod: setMethodParameter3,
             setMethods: setMethodsState,
             loading: initialLoadingState,
             showSimilarWords: initialShowSimilarWordsState
@@ -96,7 +96,7 @@ describe("reducers/index", () => {
     it("初期状態からsetMethods, setMethod, loading, showSimilarWords, loadingとStateが遷移した際に、正しいStateを返す", () => {
         dispatchEqual(store, [
             setMethods(setMethodsState),
-            setMethod(setMethodParameter),
+            setMethod(setMethodParameter3),
             loading(loadingState),
             makeShowSimilarWordsAction(showSimilarWordsState),
             loading(initialLoadingState)

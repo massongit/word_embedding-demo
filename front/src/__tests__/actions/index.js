@@ -1,9 +1,8 @@
 import * as types from "../../actions/types"
 import loadingState from "../../test_data/loadingState"
 import setMethodsState from "../../test_data/setMethodsState"
-import setMethodParameter from "../../test_data/setMethodParameter"
 import {loading, setMethod, setMethods} from "../../actions"
-import {showSimilarWordsState} from "../../test_data"
+import {setMethodParameter3, showSimilarWordsState} from "../../test_data"
 import {makeShowSimilarWordsAction} from "../reducers"
 
 /**
@@ -39,7 +38,7 @@ const setMethodsAction = {
  */
 const setMethodAction = {
     type: types.SET_METHOD,
-    payload: setMethodParameter
+    payload: setMethodParameter3
 }
 
 describe("actions/index", () => {
@@ -48,7 +47,7 @@ describe("actions/index", () => {
             [makeShowSimilarWordsAction(showSimilarWordsState), showSimilarWordsAction],
             [loading(loadingState), loadingAction],
             [setMethods(setMethodsState), setMethodsAction],
-            [setMethod(setMethodParameter), setMethodAction]
+            [setMethod(setMethodParameter3), setMethodAction]
         ]) {
             expect(v[0]).toEqual(v[1])
         }
@@ -59,7 +58,7 @@ describe("actions/index", () => {
             [makeShowSimilarWordsAction, showSimilarWordsState, showSimilarWordsAction],
             [loading, loadingState, loadingAction],
             [setMethods, setMethodsState, setMethodsAction],
-            [setMethod, setMethodParameter, setMethodAction]
+            [setMethod, setMethodParameter3, setMethodAction]
         ]) {
             expect(v[0]({
                 ...v[1],

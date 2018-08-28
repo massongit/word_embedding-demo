@@ -4,7 +4,6 @@ import emptyAction from "../../test_data/emptyAction"
 import words from "../../test_data/words"
 import keywords from "../../test_data/keywords"
 import setMethodsState from "../../test_data/setMethodsState"
-import setMethodParameter from "../../test_data/setMethodParameter"
 import setMethodParameter2 from "../../test_data/setMethodParameter2"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
@@ -19,6 +18,7 @@ import {
     storeEqual
 } from "./index"
 import {
+    setMethodParameter3,
     showSimilarWordsParameterInvalidKeyWords,
     showSimilarWordsState,
     showSimilarWordsState2,
@@ -112,7 +112,7 @@ describe("reducers/showSimilarWords", () => {
     })
 
     it("初期状態において、setMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, setMethodParameter, initialShowSimilarWordsState)
+        dispatchSetMethodEqual(store, setMethodParameter3, initialShowSimilarWordsState)
     })
 
     it("初期状態において、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {

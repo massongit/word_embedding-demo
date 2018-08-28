@@ -2,7 +2,6 @@ import loadingReducer from "../../reducers/loading"
 import loadingState from "../../test_data/loadingState"
 import emptyAction from "../../test_data/emptyAction"
 import setMethodsState from "../../test_data/setMethodsState"
-import setMethodParameter from "../../test_data/setMethodParameter"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import {createStore} from "redux"
 import {loading} from "../../actions"
@@ -15,6 +14,7 @@ import {
     storeEqual
 } from "./index"
 import {
+    setMethodParameter3,
     showSimilarWordsParameterInvalidKeyWords,
     showSimilarWordsState2,
     showSimilarWordsStateIncludeUndefinedWord2,
@@ -56,7 +56,7 @@ describe("reducers/loading", () => {
     })
 
     it("初期状態において、setMethodのActionが渡されたとき、Stateを変更しない", () => {
-        dispatchSetMethodEqual(store, setMethodParameter, initialLoadingState)
+        dispatchSetMethodEqual(store, setMethodParameter3, initialLoadingState)
     })
 
     it("初期状態において、空のsetMethodのActionが渡されたとき、Stateを変更しない", () => {
