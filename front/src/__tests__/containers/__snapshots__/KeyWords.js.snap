@@ -2,55 +2,55 @@
 
 exports[`containers/KeyWords 初期状態からStateが遷移した際に、Componentが正しく配置されている 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <KeyWords
     dispatch={[Function]}
     negative={
-        Array [
-            "男",
-          ]
+      Array [
+        "男",
+      ]
     }
     positive={
-        Array [
-            "王",
-            "女",
-          ]
+      Array [
+        "王",
+        "女",
+      ]
     }
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -62,17 +62,17 @@ ShallowWrapper {
       "children": Array [
         <label
           htmlFor="keywords"
->
+        >
           <FormattedMessage
-                    id="header.keywords"
-                    values={Object {}}
+            id="header.keywords"
+            values={Object {}}
           />
-</label>,
+        </label>,
         <p
           id="keywords"
->
+        >
           +王 +女 -男
-</p>,
+        </p>,
       ],
     },
     "ref": null,
@@ -85,7 +85,7 @@ ShallowWrapper {
           "children": <FormattedMessage
             id="header.keywords"
             values={Object {}}
-/>,
+          />,
           "htmlFor": "keywords",
         },
         "ref": null,
@@ -127,17 +127,17 @@ ShallowWrapper {
         "children": Array [
           <label
             htmlFor="keywords"
->
+          >
             <FormattedMessage
-                        id="header.keywords"
-                        values={Object {}}
+              id="header.keywords"
+              values={Object {}}
             />
-</label>,
+          </label>,
           <p
             id="keywords"
->
+          >
             +王 +女 -男
-</p>,
+          </p>,
         ],
       },
       "ref": null,
@@ -150,7 +150,7 @@ ShallowWrapper {
             "children": <FormattedMessage
               id="header.keywords"
               values={Object {}}
-/>,
+            />,
             "htmlFor": "keywords",
           },
           "ref": null,
@@ -188,6 +188,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
