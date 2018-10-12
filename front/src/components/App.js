@@ -1,15 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Header from "./Header"
-import InputPanel from "./InputPanel"
-import MethodPanel from "./MethodPanel"
-import DescriptionPanel from "../containers/DescriptionPanel"
-import OutputPanel from "./OutputPanel"
-import {Grid} from "react-bootstrap"
+import InputCard from "./InputCard"
+import MethodCard from "./MethodCard"
+import DescriptionCard from "../containers/DescriptionCard"
+import OutputCard from "./OutputCard"
+import {Container} from "reactstrap"
 
 /**
  * similarのPropTypes
- * @type {{similar: shim}}
+ * @type {{similar: *}}
  */
 export const propTypesSimilar = {
     similar: PropTypes.arrayOf(PropTypes.shape({
@@ -29,14 +29,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <Grid>
+            <Container>
                 <Header/>
-                <DescriptionPanel/>
-                <MethodPanel/>
+                <DescriptionCard/>
+                <MethodCard/>
                 {
                     (() => {
                         if (this.props.method) {
-                            return (<InputPanel/>)
+                            return (<InputCard/>)
                         }
                     })()
                 }
@@ -44,11 +44,11 @@ class App extends React.Component {
                     (() => {
                         // 分散表現による計算が行われていない場合には表示しない
                         if (0 < this.props.similar.length) {
-                            return (<OutputPanel/>)
+                            return (<OutputCard/>)
                         }
                     })()
                 }
-            </Grid>
+            </Container>
         )
     }
 }

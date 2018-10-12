@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import general from "../configs/general"
-import {FormGroup, Radio} from "react-bootstrap"
+import {Form, FormGroup, Input, Label} from "reactstrap"
 import {intlShape} from "react-intl"
 import {setMethod} from "../actions"
 
@@ -24,20 +24,27 @@ class Method extends React.Component {
         return this.props.methods.map((m, i) => {
             if (m in general["word_embeddings.methods"]) {
                 return (
-                    <Radio
-                        key={i}
-                        name="method"
-                        onChange={
-                            () => {
-                                this.props.dispatch(setMethod({
-                                    method: m
-                                }))
-                            }
-                        }
+                    <FormGroup
+                        check
                         inline
+                        key={i}
                     >
-                        {general["word_embeddings.methods"][m]}
-                    </Radio>
+                        <Input
+                            key={i}
+                            type="radio"
+                            name="method"
+                            onChange={
+                                () => {
+                                    this.props.dispatch(setMethod({
+                                        method: m
+                                    }))
+                                }
+                            }
+                        />
+                        <Label check>
+                            {general["word_embeddings.methods"][m]}
+                        </Label>
+                    </FormGroup>
                 )
             } else {
                 return undefined
@@ -69,9 +76,9 @@ class Method extends React.Component {
     render() {
         return (
             <div>
-                <FormGroup>
+                <Form inline>
                     {this.renderRadios()}
-                </FormGroup>
+                </Form>
                 {this.renderDescription()}
             </div>
         )

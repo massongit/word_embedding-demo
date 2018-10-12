@@ -1,5 +1,5 @@
 import React from "react"
-import OutputPanel from "../../components/OutputPanel"
+import OutputCard from "../../components/OutputCard"
 import Information from "../../containers/Information"
 import rootReducer from "../../reducers/index"
 import {shallow} from "enzyme"
@@ -13,13 +13,13 @@ let store
  */
 const beforeProcess = () => (
     shallow(
-        <OutputPanel
+        <OutputCard
             store={store}
         />
     ).dive()
 )
 
-describe("containers/OutputPanel", () => {
+describe("containers/OutputCard", () => {
     beforeEach(() => {
         store = createStore(rootReducer)
     })

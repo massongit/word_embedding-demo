@@ -1,5 +1,5 @@
 import React from "react"
-import {Table} from "react-bootstrap"
+import {Table} from "reactstrap"
 import {FormattedNumber, intlShape} from "react-intl"
 import {propTypesSimilar} from "./App"
 
@@ -77,7 +77,7 @@ class Information extends React.Component {
 
     render() {
         return (
-            <Table striped bordered hover condensed>
+            <Table striped bordered hover size="sm" className="mb-0">
                 <thead>
                     {this.renderHeader()}
                 </thead>

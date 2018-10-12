@@ -7,7 +7,7 @@ import setMethodsState from "../../test_data/setMethodsState"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import initialSetMethodState from "../../test_data/initialSetMethodState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
-import {FormGroup, Radio} from "react-bootstrap"
+import {FormGroup, Input} from "reactstrap"
 import {loadTranslation, mountWithIntl, shallowWithIntl} from "enzyme-react-intl"
 
 let store
@@ -42,13 +42,13 @@ describe("containers/Method", () => {
         expect(methodComponent.contains(FormGroup)).toBeTruthy()
     })
 
-    it("手法一覧セットActionのStateに含まれる全ての手法がRadioとして配置されている", () => {
+    it("手法一覧セットActionのStateに含まれる全ての手法がFormGroupとして配置されている", () => {
         const methodComponent = mountWithIntl(
             <Method
                 store={store}
             />
         )
-        const radio = methodComponent.find(Radio)
+        const radio = methodComponent.find(FormGroup)
 
         expect(radio).toHaveLength(setMethodsState.methods.length)
 
@@ -63,7 +63,7 @@ describe("containers/Method", () => {
                 store={store}
             />
         )
-        methodComponent.find(Radio).forEach((k, i) => {
+        methodComponent.find(Input).forEach((k, i) => {
             k.props().onChange()
             expect(store.getActions()).toHaveLength(i + 1)
         })

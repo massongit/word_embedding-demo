@@ -2,55 +2,55 @@
 
 exports[`containers/KeyWords 初期状態からStateが遷移した際に、Componentが正しく配置されている 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <KeyWords
     dispatch={[Function]}
     negative={
-        Array [
-            "男",
-          ]
+      Array [
+        "男",
+      ]
     }
     positive={
-        Array [
-            "王",
-            "女",
-          ]
+      Array [
+        "王",
+        "女",
+      ]
     }
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -62,17 +62,17 @@ ShallowWrapper {
       "children": Array [
         <label
           htmlFor="keywords"
->
+        >
           <FormattedMessage
-                    id="header.keywords"
-                    values={Object {}}
+            id="header.keywords"
+            values={Object {}}
           />
-</label>,
+        </label>,
         <p
           id="keywords"
->
+        >
           +王 +女 -男
-</p>,
+        </p>,
       ],
     },
     "ref": null,
@@ -85,7 +85,7 @@ ShallowWrapper {
           "children": <FormattedMessage
             id="header.keywords"
             values={Object {}}
-/>,
+          />,
           "htmlFor": "keywords",
         },
         "ref": null,
@@ -127,17 +127,17 @@ ShallowWrapper {
         "children": Array [
           <label
             htmlFor="keywords"
->
+          >
             <FormattedMessage
-                        id="header.keywords"
-                        values={Object {}}
+              id="header.keywords"
+              values={Object {}}
             />
-</label>,
+          </label>,
           <p
             id="keywords"
->
+          >
             +王 +女 -男
-</p>,
+          </p>,
         ],
       },
       "ref": null,
@@ -150,7 +150,7 @@ ShallowWrapper {
             "children": <FormattedMessage
               id="header.keywords"
               values={Object {}}
-/>,
+            />,
             "htmlFor": "keywords",
           },
           "ref": null,
@@ -188,72 +188,79 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
 }
 `;
 
-exports[`containers/PanelBody Componentが正しく配置されている 1`] = `
+exports[`containers/PanelCardBody Componentが正しく配置されている 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
     dispatch={[Function]}
-    method={undefined}
     similar={Array []}
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "bsClass": "container",
       "children": Array [
         <Header />,
-        <InjectIntl(DescriptionPanel) />,
-        <MethodPanel />,
+        <InjectIntl(DescriptionCard) />,
+        <MethodCard />,
         undefined,
         undefined,
       ],
-      "componentClass": "div",
-      "fluid": false,
+      "tag": "div",
     },
     "ref": null,
     "rendered": Array [
@@ -293,18 +300,16 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "bsClass": "container",
         "children": Array [
           <Header />,
-          <InjectIntl(DescriptionPanel) />,
-          <MethodPanel />,
+          <InjectIntl(DescriptionCard) />,
+          <MethodCard />,
           undefined,
           undefined,
         ],
-        "componentClass": "div",
-        "fluid": false,
+        "tag": "div",
       },
       "ref": null,
       "rendered": Array [
@@ -345,72 +350,79 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
 }
 `;
 
-exports[`containers/PanelBody Componentが正しく配置されている 2`] = `
+exports[`containers/PanelCardBody Componentが正しく配置されている 2`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
     dispatch={[Function]}
-    method={undefined}
     similar={Array []}
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "bsClass": "container",
       "children": Array [
         <Header />,
-        <InjectIntl(DescriptionPanel) />,
-        <MethodPanel />,
+        <InjectIntl(DescriptionCard) />,
+        <MethodCard />,
         undefined,
         undefined,
       ],
-      "componentClass": "div",
-      "fluid": false,
+      "tag": "div",
     },
     "ref": null,
     "rendered": Array [
@@ -450,18 +462,16 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "bsClass": "container",
         "children": Array [
           <Header />,
-          <InjectIntl(DescriptionPanel) />,
-          <MethodPanel />,
+          <InjectIntl(DescriptionCard) />,
+          <MethodCard />,
           undefined,
           undefined,
         ],
-        "componentClass": "div",
-        "fluid": false,
+        "tag": "div",
       },
       "ref": null,
       "rendered": Array [
@@ -502,72 +512,80 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
 }
 `;
 
-exports[`containers/PanelBody Componentが正しく配置されている 3`] = `
+exports[`containers/PanelCardBody Componentが正しく配置されている 3`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
     dispatch={[Function]}
     method="fasttext"
     similar={Array []}
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "bsClass": "container",
       "children": Array [
         <Header />,
-        <InjectIntl(DescriptionPanel) />,
-        <MethodPanel />,
-        <InputPanel />,
+        <InjectIntl(DescriptionCard) />,
+        <MethodCard />,
+        <InputCard />,
         undefined,
       ],
-      "componentClass": "div",
-      "fluid": false,
+      "tag": "div",
     },
     "ref": null,
     "rendered": Array [
@@ -615,18 +633,16 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "bsClass": "container",
         "children": Array [
           <Header />,
-          <InjectIntl(DescriptionPanel) />,
-          <MethodPanel />,
-          <InputPanel />,
+          <InjectIntl(DescriptionCard) />,
+          <MethodCard />,
+          <InputCard />,
           undefined,
         ],
-        "componentClass": "div",
-        "fluid": false,
+        "tag": "div",
       },
       "ref": null,
       "rendered": Array [
@@ -675,115 +691,123 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
 }
 `;
 
-exports[`containers/PanelBody Componentが正しく配置されている 4`] = `
+exports[`containers/PanelCardBody Componentが正しく配置されている 4`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
     dispatch={[Function]}
     method="fasttext"
     similar={
-        Array [
-            Object {
-              "cosine": 0.6129051446914673,
-              "word": "女王",
-            },
-            Object {
-              "cosine": 0.5734513998031616,
-              "word": "大王",
-            },
-            Object {
-              "cosine": 0.5623782873153687,
-              "word": "王女",
-            },
-            Object {
-              "cosine": 0.557570219039917,
-              "word": "王妃",
-            },
-            Object {
-              "cosine": 0.536829948425293,
-              "word": "デュエルモンスターズビギナーズパック",
-            },
-            Object {
-              "cosine": 0.5333640575408936,
-              "word": "デュエルモンスターズエキスパート",
-            },
-            Object {
-              "cosine": 0.5321550369262695,
-              "word": "戯",
-            },
-            Object {
-              "cosine": 0.5298371911048889,
-              "word": "遊戯",
-            },
-            Object {
-              "cosine": 0.5250808000564575,
-              "word": "デュエルモンスターズ",
-            },
-            Object {
-              "cosine": 0.525033175945282,
-              "word": "王家",
-            },
-          ]
+      Array [
+        Object {
+          "cosine": 0.6129051446914673,
+          "word": "女王",
+        },
+        Object {
+          "cosine": 0.5734513998031616,
+          "word": "大王",
+        },
+        Object {
+          "cosine": 0.5623782873153687,
+          "word": "王女",
+        },
+        Object {
+          "cosine": 0.557570219039917,
+          "word": "王妃",
+        },
+        Object {
+          "cosine": 0.536829948425293,
+          "word": "デュエルモンスターズビギナーズパック",
+        },
+        Object {
+          "cosine": 0.5333640575408936,
+          "word": "デュエルモンスターズエキスパート",
+        },
+        Object {
+          "cosine": 0.5321550369262695,
+          "word": "戯",
+        },
+        Object {
+          "cosine": 0.5298371911048889,
+          "word": "遊戯",
+        },
+        Object {
+          "cosine": 0.5250808000564575,
+          "word": "デュエルモンスターズ",
+        },
+        Object {
+          "cosine": 0.525033175945282,
+          "word": "王家",
+        },
+      ]
     }
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
     }
     storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
-          }
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "bsClass": "container",
       "children": Array [
         <Header />,
-        <InjectIntl(DescriptionPanel) />,
-        <MethodPanel />,
-        <InputPanel />,
-        <OutputPanel />,
+        <InjectIntl(DescriptionCard) />,
+        <MethodCard />,
+        <InputCard />,
+        <OutputCard />,
       ],
-      "componentClass": "div",
-      "fluid": false,
+      "tag": "div",
     },
     "ref": null,
     "rendered": Array [
@@ -839,18 +863,16 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "bsClass": "container",
         "children": Array [
           <Header />,
-          <InjectIntl(DescriptionPanel) />,
-          <MethodPanel />,
-          <InputPanel />,
-          <OutputPanel />,
+          <InjectIntl(DescriptionCard) />,
+          <MethodCard />,
+          <InputCard />,
+          <OutputCard />,
         ],
-        "componentClass": "div",
-        "fluid": false,
+        "tag": "div",
       },
       "ref": null,
       "rendered": Array [
@@ -907,6 +929,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },

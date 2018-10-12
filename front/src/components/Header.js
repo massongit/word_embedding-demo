@@ -1,16 +1,14 @@
 import React from "react"
-import {Jumbotron, Row} from "react-bootstrap"
+import {Jumbotron} from "reactstrap"
 
 /**
  * ヘッダー
  * @returns {element} ヘッダー
  */
 const Header = () => (
-    <Row>
-        <Jumbotron>
-            <h1>Word Embedding</h1>
-        </Jumbotron>
-    </Row>
+    <Jumbotron>
+        <h1 className="display-4">Word Embedding</h1>
+    </Jumbotron>
 )
 
 export default Header

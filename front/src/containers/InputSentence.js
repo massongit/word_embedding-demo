@@ -1,4 +1,4 @@
-import Input from "../components/Input"
+import InputSentence from "../components/InputSentence"
 import {connect} from "react-redux"
 import {injectIntl} from "react-intl"
 
@@ -12,4 +12,4 @@ const mapStateToProps = state => ({
 /**
  * 入力部のContainer
  */
-export default injectIntl(connect(mapStateToProps)(Input))
+export default injectIntl(connect(mapStateToProps)(InputSentence))

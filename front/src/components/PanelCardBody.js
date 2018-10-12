@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Panel} from "react-bootstrap"
+import {CardBody, CardText} from "reactstrap"
 import {intlShape} from "react-intl"
 
 /**
- * PanelのBody
+ * CardのBody
  */
-class PanelBody extends React.Component {
+class PanelCardBody extends React.Component {
     static propTypes = {
         messageId: PropTypes.string,
         additionalDescription: PropTypes.node,
@@ -29,9 +29,9 @@ class PanelBody extends React.Component {
 
             if (this.props.children) {
                 return (
-                    <p>
+                    <CardText>
                         {description}
-                    </p>
+                    </CardText>
                 )
             } else {
                 return description
@@ -41,12 +41,12 @@ class PanelBody extends React.Component {
 
     render() {
         return (
-            <Panel.Body>
+            <CardBody>
                 {this.renderDescription()}
                 {this.props.children}
-            </Panel.Body>
+            </CardBody>
         )
     }
 }
 
-export default PanelBody
+export default PanelCardBody
