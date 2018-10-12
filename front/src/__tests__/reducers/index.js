@@ -79,7 +79,7 @@ export const dispatchSomeActionAndShowSimilarWordsEqual = (store, p, s, action) 
     ], s)
 }
 
-export const loadingAndSetMethodTests = (e, a, name, b, c, d) => {
+export const loadingAndSetMethodTests = (e, a, name, b, c) => {
     beforeEach(() => {
         store = createStore(e)
     })
@@ -101,6 +101,12 @@ export const loadingAndSetMethodTests = (e, a, name, b, c, d) => {
 
     it("初期状態において、空のsetMethodsのActionが渡されたとき、Stateを変更しない", () => {
         dispatchSetMethodsEqual(store, emptyAction, a)
+    })
+}
+
+export const loadingAndSetMethodTests2 = (e, a, name, b, c, d) => {
+    beforeEach(() => {
+        store = createStore(e)
     })
 
     it("初期状態以外のStateにおいて" + name + "のActionから" + name + "のStateを生成する", () => {

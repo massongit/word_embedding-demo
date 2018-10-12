@@ -10,6 +10,7 @@ import {
     dispatchEqual,
     dispatchSomeActionAndShowSimilarWordsEqual,
     loadingAndSetMethodTests,
+    loadingAndSetMethodTests2,
     makeShowSimilarWordsAction
 } from "./index"
 import {
@@ -62,5 +63,9 @@ describe("reducers/setMethod/1", () => {
 })
 
 describe("reducers/setMethod/2", () => {
-    loadingAndSetMethodTests(setMethodReducer, initialSetMethodState, "setMethod", setMethodParameter3, setMethod, setMethodParameter2)
+    loadingAndSetMethodTests(setMethodReducer, initialSetMethodState, "setMethod", setMethodParameter3, setMethod)
+})
+
+describe("reducers/setMethod/3", () => {
+    loadingAndSetMethodTests2(setMethodReducer, initialSetMethodState, "setMethod", setMethodParameter3, setMethod, setMethodParameter2)
 })

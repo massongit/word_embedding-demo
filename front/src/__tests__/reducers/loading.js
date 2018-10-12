@@ -4,7 +4,12 @@ import emptyAction from "../../test_data/emptyAction"
 import initialLoadingState from "../../test_data/initialLoadingState"
 import {createStore} from "redux"
 import {loading} from "../../actions"
-import {dispatchSetMethodEqual, dispatchSomeActionAndShowSimilarWordsEqual, loadingAndSetMethodTests} from "./index"
+import {
+    dispatchSetMethodEqual,
+    dispatchSomeActionAndShowSimilarWordsEqual,
+    loadingAndSetMethodTests,
+    loadingAndSetMethodTests2
+} from "./index"
 import {
     setMethodParameter3,
     showSimilarWordsState2,
@@ -45,5 +50,9 @@ describe("reducers/loading/1", () => {
 })
 
 describe("reducers/loading/2", () => {
-    loadingAndSetMethodTests(loadingReducer, initialLoadingState, "loading", loadingState, loading, initialLoadingState)
+    loadingAndSetMethodTests(loadingReducer, initialLoadingState, "loading", loadingState, loading)
+})
+
+describe("reducers/loading/3", () => {
+    loadingAndSetMethodTests2(loadingReducer, initialLoadingState, "loading", loadingState, loading, initialLoadingState)
 })
