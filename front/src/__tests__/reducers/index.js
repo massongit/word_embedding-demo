@@ -1,5 +1,6 @@
 import deepcopy from "deepcopy"
 import rootReducer from "../../reducers"
+import emptyAction from "../../test_data/emptyAction"
 import loadingState from "../../test_data/loadingState"
 import setMethodsState from "../../test_data/setMethodsState"
 import setMethodParameter from "../../test_data/setMethodParameter"
@@ -9,7 +10,12 @@ import initialSetMethodsState from "../../test_data/initialSetMethodsState"
 import initialShowSimilarWordsState from "../../test_data/initialShowSimilarWordsState"
 import {createStore} from "redux"
 import {loading, setMethod, setMethods, showSimilarWords} from "../../actions"
-import {setMethodParameter3, showSimilarWordsState} from "../../test_data"
+import {
+    setMethodParameter3,
+    showSimilarWordsParameterInvalidKeyWords,
+    showSimilarWordsState,
+    showSimilarWordsStateIncludeUndefinedWord2
+} from "../../test_data"
 
 export const dispatchActions = (store, actions) => {
     if (!(actions instanceof Array)) {
@@ -57,6 +63,60 @@ export const dispatchSetMethodsAndSetMethodEqual = (store, p, s) => {
         setMethods(setMethodsState),
         setMethod(p)
     ], s)
+}
+
+export const dispatchSomeActionAndShowSimilarWordsEqual = (store, p, s, action) => {
+    dispatchEqual(store, [
+        action(s),
+        makeShowSimilarWordsAction(p)
+    ], s)
+}
+
+export const loadingAndSetMethodTests = (e, a, name, b, c, d) => {
+    beforeEach(() => {
+        store = createStore(e)
+    })
+
+    it("初期状態を正しく保持している", () => {
+        storeEqual(store, a)
+    })
+
+    it("初期状態において、" + name + "のActionから" + name + "のStateを生成する", () => {
+        dispatchEqual(store, c(b), b)
+    })
+
+    it("初期状態において、空の" + name + "のActionが渡されたとき、Stateを変更しない", () => {
+        dispatchEqual(store, c(emptyAction), a)
+    })
+    it("初期状態において、setMethodsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodsEqual(store, setMethodsState, a)
+    })
+
+    it("初期状態において、空のsetMethodsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSetMethodsEqual(store, emptyAction, a)
+    })
+
+    it("初期状態以外のStateにおいて" + name + "のActionから" + name + "のStateを生成する", () => {
+        dispatchEqual(store, [
+            c(b),
+            c(d)
+        ], d)
+    })
+
+    it("初期状態以外のStateにおいて、空の" + name + "のActionが渡されたとき、Stateを変更しない", () => {
+        dispatchEqual(store, [
+            c(b),
+            c(emptyAction)
+        ], b)
+    })
+
+    it("初期状態以外のStateにおいて、undefinedな要素を含むwordsを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSomeActionAndShowSimilarWordsEqual(store, showSimilarWordsStateIncludeUndefinedWord2, b, c)
+    })
+
+    it("初期状態以外のStateにおいて、sentenceとwords内の単語が一致しないshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
+        dispatchSomeActionAndShowSimilarWordsEqual(store, showSimilarWordsParameterInvalidKeyWords, b, c)
+    })
 }
 
 let store
