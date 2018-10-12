@@ -17,6 +17,42 @@ class Method extends React.Component {
     }
 
     /**
+     * ラジオボタンのテキストを描画する
+     * @param method 手法
+     * @returns {*} ラジオボタンのテキスト
+     */
+    static renderTextOfRadio(method) {
+        return (
+            <Label check>
+                {general["word_embeddings.methods"][method]}
+            </Label>
+        )
+    }
+
+    /**
+     * ラジオボタンを描画する
+     * @param key ラジオボタンのkey
+     * @param method 手法
+     * @returns {*} ラジオボタン
+     */
+    renderRadio(key, method) {
+        return (
+            <Input
+                key={key}
+                type="radio"
+                name="method"
+                onChange={
+                    () => {
+                        this.props.dispatch(setMethod({
+                            method
+                        }))
+                    }
+                }
+            />
+        )
+    }
+
+    /**
      * ラジオボタンを描画する
      * @returns {*} ラジオボタン
      */
@@ -29,21 +65,8 @@ class Method extends React.Component {
                         inline
                         key={i}
                     >
-                        <Input
-                            key={i}
-                            type="radio"
-                            name="method"
-                            onChange={
-                                () => {
-                                    this.props.dispatch(setMethod({
-                                        method: m
-                                    }))
-                                }
-                            }
-                        />
-                        <Label check>
-                            {general["word_embeddings.methods"][m]}
-                        </Label>
+                        {this.renderRadio(i, m)}
+                        {Method.renderTextOfRadio(m)}
                     </FormGroup>
                 )
             } else {
