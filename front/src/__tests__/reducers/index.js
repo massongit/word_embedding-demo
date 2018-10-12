@@ -17,6 +17,13 @@ import {
     showSimilarWordsStateIncludeUndefinedWord2
 } from "../../test_data"
 
+const dispatchDoubleSomeActionEqual = (store, b, c, d, e) => {
+    dispatchEqual(store, [
+        c(b),
+        c(d)
+    ], e)
+}
+
 export const dispatchActions = (store, actions) => {
     if (!(actions instanceof Array)) {
         actions = [actions]
@@ -97,17 +104,11 @@ export const loadingAndSetMethodTests = (e, a, name, b, c, d) => {
     })
 
     it("初期状態以外のStateにおいて" + name + "のActionから" + name + "のStateを生成する", () => {
-        dispatchEqual(store, [
-            c(b),
-            c(d)
-        ], d)
+        dispatchDoubleSomeActionEqual(store, b, c, d, d)
     })
 
     it("初期状態以外のStateにおいて、空の" + name + "のActionが渡されたとき、Stateを変更しない", () => {
-        dispatchEqual(store, [
-            c(b),
-            c(emptyAction)
-        ], b)
+        dispatchDoubleSomeActionEqual(store, b, c, emptyAction, b)
     })
 
     it("初期状態以外のStateにおいて、undefinedな要素を含むwordsを持ったshowSimilarWordsのActionが渡されたとき、Stateを変更しない", () => {
