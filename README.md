@@ -100,7 +100,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
     # <VirtualHost {ドメイン名}:80>
     	# TODO: 以下を記述し、コメントアウトを解除
     	# <Location /{サブドメイン名}>
-    		ProxyPass unix:/tmp/kword_embedding-demo.sock|uwsgi://word_embedding-demo
+    		ProxyPass unix:/tmp/word_embedding-demo.sock|uwsgi://word_embedding-demo
     		RewriteEngine on
     		# TODO: 以下を記述し、コメントアウトを解除
     		# RewriteRule ^/{サブドメイン名}(/.*)?$ $1
