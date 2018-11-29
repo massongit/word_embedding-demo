@@ -7,7 +7,7 @@ Word2VecやFastTextのモデルを用いて単語の加算・減算を行うデ�
 Masaya Suzuki <suzukimasaya428@gmail.com>
 
 ## バージョン
-0.0.4
+0.0.5
 
 ## 開発言語・主要ライブラリ
 ### サーバーサイド

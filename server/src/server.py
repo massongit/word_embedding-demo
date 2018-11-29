@@ -24,7 +24,7 @@ import config
 __author__ = 'Masaya Suzuki'
 
 # バージョン
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 # 設定
 conf = config.Config(pathlib.Path.cwd().parent / 'configs')
