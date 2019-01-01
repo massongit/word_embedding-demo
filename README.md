@@ -220,7 +220,7 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
         * uwsgi.ini: uWSGIを使用する場合の設定
     * logs: ログが格納されている
     * src/: ソースが格納されている
-        * config.py: 設定ファイルを扱うためのオブジェクト
+        * configs/: 設定ファイルを扱うためのオブジェクトが格納されている ([python-config-object](https://github.com/massongit/python-config-object))
         * Pipfile: Pythonのパッケージ情報 ([pipenv](https://docs.pipenv.org/)が使用)
         * Pipfile.lock: Pythonのパッケージ情報 ([pipenv](https://docs.pipenv.org/)が使用)
         * server.py: サーバー
