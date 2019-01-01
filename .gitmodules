@@ -1,0 +1,3 @@
+[submodule "server/src/configs"]
+	path = server/src/configs
+	url = https://github.com/massongit/python-config-object
