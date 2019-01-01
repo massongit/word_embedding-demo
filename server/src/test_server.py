@@ -9,7 +9,7 @@ import pathlib
 
 import pytest
 
-import config
+import configs
 import server
 
 # 作者
@@ -34,7 +34,7 @@ def conf():
     設定を返す
     :return: 設定
     """
-    return config.Config(pathlib.Path.cwd().parent / 'configs')
+    return configs.Config(pathlib.Path.cwd().parent / 'configs')
 
 
 def test_render_index(client, conf):
