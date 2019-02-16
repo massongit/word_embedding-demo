@@ -27,6 +27,31 @@ class InputSentence extends React.Component {
     }
 
     /**
+     * 分散表現のAPIを呼び出す
+     * @param query {object} クエリ
+     * @returns {Promise<*>} 計算結果
+     */
+    static async callWordEmbedding(query) {
+        const res = await fetch(
+            "wordembedding",
+            {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(query)
+            }
+        )
+
+        if (res.ok) {
+            return await res.json()
+        } else {
+            throw new Error(res.statusText)
+        }
+    }
+
+    /**
      * 入力されたキーワードをpositiveな単語とnegativeな単語に分類する
      * @returns {{positive: Array, negative: Array}} APIへの入力用のキーワード
      */
@@ -77,31 +102,6 @@ class InputSentence extends React.Component {
     }
 
     /**
-     * 分散表現のAPIを呼び出す
-     * @param query {object} クエリ
-     * @returns {Promise<*>} 計算結果
-     */
-    async callWordEmbedding(query) {
-        return await (await fetch(
-            "wordembedding",
-            {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(query)
-            }
-        ).then(res => {
-            if (res.ok) {
-                return res
-            } else {
-                throw new Error(res.statusText)
-            }
-        })).json()
-    }
-
-    /**
      * 分散表現による計算を行い、分散表現による計算結果の表示Actionをdispatchする
      * @param keywords キーワード
      */
@@ -110,7 +110,7 @@ class InputSentence extends React.Component {
             this.props.dispatch(showSimilarWords({
                 keywords,
                 method: this.props.method,
-                words: await this.callWordEmbedding({
+                words: await InputSentence.callWordEmbedding({
                     ...keywords,
                     method: this.props.method
                 })

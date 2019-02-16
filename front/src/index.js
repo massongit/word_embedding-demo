@@ -25,20 +25,20 @@ process.on("uncaughtException", er => {
 const store = createStore(rootReducer);
 
 (async () => {
-    store.dispatch(setMethods({
-        methods: await (await fetch(
-            "wordembedding",
-            {
-                method: "GET"
-            }
-        ).then(res => {
-            if (res.ok) {
-                return res
-            } else {
-                throw new Error(res.statusText)
-            }
-        })).json()
-    }))
+    const res = await fetch(
+        "wordembedding",
+        {
+            method: "GET"
+        }
+    )
+
+    if (res.ok) {
+        store.dispatch(setMethods({
+            methods: await res.json()
+        }))
+    } else {
+        throw new Error(res.statusText)
+    }
 })()
 
 // ルート要素を表示
