@@ -27,7 +27,7 @@
     "redux-actions": "^2.6.1"
   },
   "devDependencies": {
-    "deepcopy": "^1.0.0",
+    "deepcopy": "^2.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-react-intl": "^2.0.5",
