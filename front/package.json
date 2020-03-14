@@ -24,7 +24,11 @@
     "react-scripts": "^3.3.0",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.0",
-    "redux-actions": "^2.6.1"
+    "redux-actions": "^2.6.1",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.16.0",
+    "typescript": "^3.7.2",
+    "eslint": "^6.6.0"
   },
   "devDependencies": {
     "deepcopy": "^2.0.0",
