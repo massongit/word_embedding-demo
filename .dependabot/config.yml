@@ -1,0 +1,14 @@
+version: 1
+update_configs:
+  - package_manager: "python"
+    directory: "/server/src"
+    update_schedule: "live"
+    allowed_updates:
+      - match:
+          update_type: "security"
+  - package_manager: "javascript"
+    directory: "/front"
+    update_schedule: "live"
+    allowed_updates:
+      - match:
+          update_type: "security"
