@@ -1,6 +1,6 @@
 # 分散表現デモプログラム
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9fc9d657595410c57d80/maintainability)](https://codeclimate.com/github/massongit/word_embedding-demo/maintainability)  
+[![Maintainability](https://api.codeclimate.com/v1/badges/9fc9d657595410c57d80/maintainability)](https://codeclimate.com/github/massongit/word_embedding-demo/maintainability) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=massongit/word_embedding-demo)](https://dependabot.com)  
 Word2VecやFastTextのモデルを用いて単語の加算・減算を行うデモプログラム
 
 ## 作者
