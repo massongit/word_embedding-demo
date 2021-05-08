@@ -11,15 +11,15 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 
 ## 開発言語・主要ライブラリ
 ### サーバーサイド
-* [Python](https://www.python.org/) 3.x
+* [Python](https://www.python.org/) 3.8
 * [Flask](http://flask.pocoo.org/)
 * [gensim](https://radimrehurek.com/gensim/)
-* [pyfasttext](https://github.com/vrasneur/pyfasttext)
+* [fasttext](https://github.com/facebookresearch/fastText)
 * [natto-py](https://github.com/buruzaemon/natto-py)
 * [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/)
 
 ### フロントエンド
-* [Node.js](https://nodejs.org/ja/) 8.x
+* [Node.js](https://nodejs.org/ja/) 14.15
 * [node-fetch](https://github.com/bitinn/node-fetch)
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
@@ -32,13 +32,13 @@ Masaya Suzuki <suzukimasaya428@gmail.com>
 ## 必要なソフトウェア
 ### 共通
 * [MeCab](http://taku910.github.io/mecab/) (Word2Vecのモデルを使用する場合のみ)
-* [Python](https://www.python.org/) 3.x
+* [Python](https://www.python.org/) 3.8
 * [pipenv](https://docs.pipenv.org/) (インストールコマンド: `pip install pipenv`)
 * [nginx](http://nginx.org/) (nginxを使う場合のみ)
 * [Apache2](https://httpd.apache.org/) (Apache2を使う場合のみ)
 
 ### `front/build`ディレクトリがない場合のみ
-* [Node.js](https://nodejs.org/ja/) 8.x
+* [Node.js](https://nodejs.org/ja/) 14.15
 * [Yarn](https://yarnpkg.com/ja/)
 
 ## 必要なデータ

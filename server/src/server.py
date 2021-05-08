@@ -10,7 +10,6 @@ import json
 import logging
 import os
 import pathlib
-import pyfasttext
 
 import flask
 import flask_api.status
@@ -90,7 +89,7 @@ class WordEmbeddingView(flask_classy.FlaskView):
         # FastTextのモデルを使用するとき
         if conf.get('general', 'fasttext', 'model path'):
             # FastTextのモデル
-            self.word_embeddings['fasttext'] = pyfasttext.FastText(conf.get('general', 'fasttext', 'model path'))
+            self.word_embeddings['fasttext'] = gensim.models.FastText.load_fasttext_format(conf.get('general', 'fasttext', 'model path'))
 
         self.pn = {
             'positive': 1,

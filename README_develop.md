@@ -1,9 +1,9 @@
 # 開発者向け情報
 ## 必要なソフトウェア
 * [MeCab](http://taku910.github.io/mecab/)
-* [Python](https://www.python.org/) 3.x
+* [Python](https://www.python.org/) 3.8
 * [pipenv](https://docs.pipenv.org/) (インストールコマンド: `pip install pipenv`)
-* [Node.js](https://nodejs.org/ja/) 8.x
+* [Node.js](https://nodejs.org/ja/) 14.15
 * [Yarn](https://yarnpkg.com/ja/)
 
 ## URL一覧

@@ -17,4 +17,4 @@ uwsgi = "==2.0.17.1"
 pytest = "==4.0.1"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
